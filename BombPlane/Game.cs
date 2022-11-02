@@ -34,16 +34,22 @@ namespace BombPlane
 
         void Run()
         {
+            if (gameMode == 1)
+            {
+                ConnectToServer();
+                //receive game start confirmation
+            }
+            //wait for connection
+
             planePos[0] = player[0].SetPlane(0);
 
             if (gameMode == 0) planePos[1] = player[1].SetPlane(1);
             else
             {
-                ConnectToServer();
                 //Message.Send(); //send my planePos
                 //Message.Recv(); //should receive the opponent's planePos
             }
-            //communicate game information
+            //communicate game information (planePos)
 
             Random rand = new Random();
             if (gameMode == 0) turn = rand.Next(2);
