@@ -35,6 +35,7 @@ namespace BombPlane
         {
             int[][] pos;
             //AI set plane
+            pos = (int[][])CellManager.getInstance().PlaneSubmit().Clone();
             return pos;
         }
         public override int TakeAction(int[][] state)

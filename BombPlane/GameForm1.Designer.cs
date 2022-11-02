@@ -1,4 +1,4 @@
-﻿namespace BlowPlanes
+﻿namespace BombPlane
 {
     partial class GameForm
     {
@@ -31,7 +31,11 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.GameTable = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.UndoButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FinishButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -41,6 +45,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Controls.Add(this.GameTable, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -49,6 +54,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(673, 547);
             this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // GameTable
             // 
@@ -93,14 +99,44 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
+            // UndoButton
+            // 
+            this.UndoButton.Location = new System.Drawing.Point(3, 3);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(163, 79);
+            this.UndoButton.TabIndex = 2;
+            this.UndoButton.Text = "撤销";
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.UndoButton);
+            this.flowLayoutPanel1.Controls.Add(this.FinishButton);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(507, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 458);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // FinishButton
+            // 
+            this.FinishButton.Location = new System.Drawing.Point(3, 88);
+            this.FinishButton.Name = "FinishButton";
+            this.FinishButton.Size = new System.Drawing.Size(160, 80);
+            this.FinishButton.TabIndex = 3;
+            this.FinishButton.Text = "完成";
+            this.FinishButton.UseVisualStyleBackColor = true;
+            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
+            // 
             // GameForm
             // 
             this.ClientSize = new System.Drawing.Size(673, 547);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Name = "GameForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
-            this.Load += new System.EventHandler(this.GameForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -109,5 +145,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel GameTable;
         private System.Windows.Forms.Label label2;
+        private Button UndoButton;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button FinishButton;
     }
 }

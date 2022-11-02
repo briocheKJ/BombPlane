@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BlowPlanes
+namespace BombPlane
 {
     public partial class GameForm : Form
     {
@@ -125,14 +125,14 @@ namespace BlowPlanes
             }
             else
             {
-                if(CellManager.getInstance().Planeable((Label)sender, direct))
+                if(CellManager.getInstance().Planeable((Label)sender, direct) && CellManager.getInstance().getPlaneNum() < 3)
                 {
                     DrawColor((Label)sender, direct, Color.Violet);
                     CellManager.getInstance().PlacePlane((Label)sender, direct);
                 }
                 else
                 {
-                    MessageBox.Show("不可以叠放！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("不可以放置！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -148,9 +148,25 @@ namespace BlowPlanes
             fatherForm.Show();
         }
 
-        private void GameForm_Load(object sender, EventArgs e)
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            if(CellManager.getInstance().getPlaneNum() > 0)
+            {
+                int[] lp = CellManager.getInstance().LastPlane();
+                DrawColor(Squares[lp[0] * 10 + lp[1]], lp[2], Color.LightBlue);
+                CellManager.getInstance().RevokeLastPlane();
+            }
+            
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void FinishButton_Click(object sender, EventArgs e)
+        {
+            CellManager.getInstance().
         }
     }
 }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BlowPlanes
+namespace BombPlane
 {
     internal class Cell
     {
@@ -33,11 +34,61 @@ namespace BlowPlanes
         {
             return instance;
         }
-        private CellManager() { }
+        
         private Cell[] CellsA = new Cell[100];
         private Cell[] CellsB = new Cell[100];
         private int[] PlanA = { 0, -1, -2, -2, -2, 0, 0, 0, 0, +1 };
         private int[] PlanB = { 0, 0, 0, -1, +1, -1, -2, +1, +2, 0 };
+        private int PlaneNum = 0;
+        private int[][] PlaneCenter = new int[3][] { new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 } };
+        private int[][] PlanePosition = new int[10][];
+        private CellManager() { 
+            for(int i = 0; i < 10; i++) {
+                PlanePosition[i] = new int[10];
+            }
+        }
+        private void transform(out int[] npa, out int[] npb, int dir)
+        {
+            npa = (int[])PlanA.Clone();
+            npb = (int[])PlanB.Clone();
+            for (int i = 0; i < dir; i++)
+            {
+                int tmp;
+                for (int j = 0; j < 10; j++)
+                {
+                    tmp = npa[j];
+                    npa[j] = npb[j];
+                    npb[j] = -tmp;
+                }
+            }
+        }
+        public int getPlaneNum()
+        {
+            return PlaneNum;
+        }
+        public void SetPlane(int posi, int posj, int dir)
+        {
+            PlaneCenter[PlaneNum][0] = posi;
+            PlaneCenter[PlaneNum][1] = posj;
+            PlaneCenter[PlaneNum][2] = dir;
+            PlaneNum++;
+        }
+        public int[] LastPlane()
+        {
+            return PlaneCenter[PlaneNum - 1];
+        }
+        public void RevokeLastPlane()
+        {
+            PlaneNum--;
+            int l = PlaneCenter[PlaneNum][0], r = PlaneCenter[PlaneNum][1];
+            int[] npa;
+            int[] npb;
+            transform(out npa, out npb, PlaneCenter[PlaneNum][2]);
+            for (int i = 0; i < 10; i++)
+            {
+                CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = 0;
+            }
+        }
         public void initailize()
         {
             for(int i = 0; i < 100; i++)
@@ -54,19 +105,10 @@ namespace BlowPlanes
             string name = positon.Name;
             int id = int.Parse(name.Remove(0, 7));
             int l = id / 10, r = id % 10;
-            int[] npa = { 0, -1, -2, -2, -2, 0, 0, 0, 0, +1 };
-            int[] npb = { 0, 0, 0, -1, +1, -1, -2, +1, +2, 0 };
+            int[] npa;
+            int[] npb;
             bool flag = true;
-            for (int i = 0; i < dir; i++)
-            {
-                int tmp;
-                for(int j = 0; j < 10; j++)
-                {
-                    tmp = npa[j];
-                    npa[j] = npb[j];
-                    npb[j] = -tmp;
-                }
-            }
+            transform(out npa, out npb, dir);
             for (int i = 0; i < 10; i++)
             {
                 if (l + npa[i] < 0 || l + npa[i] > 9 || r + npb[i] < 0 || r + npb[i] > 9 || CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane != 0)
@@ -81,22 +123,25 @@ namespace BlowPlanes
             string name = positon.Name;
             int id = int.Parse(name.Remove(0, 7));
             int l = id / 10, r = id % 10;
-            int[] npa = { 0, -1, -2, -2, -2, 0, 0, 0, 0, +1 };
-            int[] npb = { 0, 0, 0, -1, +1, -1, -2, +1, +2, 0 };
-            for (int i = 0; i < dir; i++)
-            {
-                int tmp;
-                for (int j = 0; j < 10; j++)
-                {
-                    tmp = npa[j];
-                    npa[j] = npb[j];
-                    npb[j] = -tmp;
-                }
-            }
+            int[] npa;
+            int[] npb;
+            transform(out npa, out npb, dir);
+            SetPlane(l, r, dir);
             for (int i = 0; i < 10; i++)
             {
                 CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 0 ? 2 : 1);
             }
+        }
+        public int[][] PlaneSubmit()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                for(int j = 0; j < 10; j++)
+                {
+                    PlanePosition[i][j] = CellsA[i * 10 + j].ifPlane;
+                }
+            }
+            return PlanePosition;
         }
     }
 }

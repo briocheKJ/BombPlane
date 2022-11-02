@@ -1,4 +1,4 @@
-﻿namespace BlowPlanes
+﻿namespace BombPlane
 {
     partial class HelpForm
     {
@@ -36,8 +36,8 @@
             // HelpPageTitle
             // 
             this.HelpPageTitle.AutoSize = true;
-            this.HelpPageTitle.Font = new System.Drawing.Font("华文隶书", 34F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HelpPageTitle.Location = new System.Drawing.Point(324, 51);
+            this.HelpPageTitle.Font = new System.Drawing.Font("华文隶书", 34F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpPageTitle.Location = new System.Drawing.Point(364, 68);
             this.HelpPageTitle.Name = "HelpPageTitle";
             this.HelpPageTitle.Size = new System.Drawing.Size(139, 58);
             this.HelpPageTitle.TabIndex = 0;
@@ -45,9 +45,10 @@
             // 
             // ReturnButton
             // 
-            this.ReturnButton.Location = new System.Drawing.Point(327, 471);
+            this.ReturnButton.Location = new System.Drawing.Point(352, 489);
+            this.ReturnButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ReturnButton.Name = "ReturnButton";
-            this.ReturnButton.Size = new System.Drawing.Size(156, 66);
+            this.ReturnButton.Size = new System.Drawing.Size(176, 88);
             this.ReturnButton.TabIndex = 1;
             this.ReturnButton.Text = "返回";
             this.ReturnButton.UseVisualStyleBackColor = true;
@@ -55,14 +56,15 @@
             // 
             // HelpForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(831, 574);
+            this.ClientSize = new System.Drawing.Size(896, 590);
             this.Controls.Add(this.ReturnButton);
             this.Controls.Add(this.HelpPageTitle);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HelpForm";
             this.Text = "HelpPage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HelpForm_FormClosed);
