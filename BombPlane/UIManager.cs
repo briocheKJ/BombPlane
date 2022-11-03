@@ -91,15 +91,25 @@ namespace BombPlane
         }
         public void initailize()
         {
+            PlaneNum = 0;
             for(int i = 0; i < 100; i++)
             {
                 CellsA[i] = new Cell();
             }
         }
-        public int CellifPlane(int posi, int posj)
+        public int CellAifPlane(int posi, int posj)
         {
             return CellsA[posi * 10 + posj].ifPlane;
         }
+        public int CellAifPlane(int num)
+        {
+            return CellsA[num].ifPlane;
+        }
+        public int CellBifPlane(int posi, int posj)
+        {
+            return CellsB[posi * 10 + posj].ifPlane;
+        }
+
         public bool Planeable(System.Windows.Forms.Label positon, int dir)
         {
             string name = positon.Name;
@@ -129,7 +139,7 @@ namespace BombPlane
             SetPlane(l, r, dir);
             for (int i = 0; i < 10; i++)
             {
-                CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 0 ? 2 : 1);
+                CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 9 ? 2 : 1);
             }
         }
         public int[][] PlaneSubmit()
@@ -142,6 +152,10 @@ namespace BombPlane
                 }
             }
             return PlanePosition;
+        }
+        public void PlaneClear()
+        {
+
         }
     }
 }

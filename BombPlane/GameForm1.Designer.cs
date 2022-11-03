@@ -31,8 +31,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.GameTable = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.UndoButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.UndoButton = new System.Windows.Forms.Button();
             this.FinishButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -99,16 +99,6 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
-            // UndoButton
-            // 
-            this.UndoButton.Location = new System.Drawing.Point(3, 3);
-            this.UndoButton.Name = "UndoButton";
-            this.UndoButton.Size = new System.Drawing.Size(163, 79);
-            this.UndoButton.TabIndex = 2;
-            this.UndoButton.Text = "撤销";
-            this.UndoButton.UseVisualStyleBackColor = true;
-            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.UndoButton);
@@ -118,6 +108,16 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 458);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.Location = new System.Drawing.Point(3, 3);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(163, 79);
+            this.UndoButton.TabIndex = 2;
+            this.UndoButton.Text = "撤销";
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // FinishButton
             // 
@@ -133,7 +133,9 @@
             // 
             this.ClientSize = new System.Drawing.Size(673, 547);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Location = new System.Drawing.Point(100, 200);
             this.Name = "GameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

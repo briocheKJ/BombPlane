@@ -29,9 +29,9 @@ namespace BombPlane
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form Gameform = new GameForm(this);
+            Form Gameform1 = new GameForm(this);
             this.Hide();
-            Gameform.Show();
+            Gameform1.Show();
         }
     }
 }

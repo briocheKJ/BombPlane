@@ -17,6 +17,7 @@ namespace BombPlane
         public override int[][] SetPlane(int player)
         {
             int[][] pos;
+            pos = (int[][])CellManager.getInstance().PlaneSubmit().Clone();
             //notice UI, wait for return
             return pos;
         }

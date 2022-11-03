@@ -14,17 +14,19 @@ namespace BombPlane
     {
         private Label[] Squares;
         private Form fatherForm;
+        private RivalView RivalForm;
         private int direct = 0;
         public GameForm(Form fatherForm)
         {
             InitializeComponent();
             CellManager.getInstance().initailize();
             this.fatherForm = fatherForm;
+            RivalForm = new RivalView(this);
             Squares = new Label[100];
             for(int i = 0; i < Squares.Length; i++)
             {
                 Squares[i] = new Label();
-                Squares[i].BackColor = Color.LightBlue;
+                Squares[i].BackColor = Color.LightGray;
                 Squares[i].Name = "Squares" + i;
                 Squares[i].Dock = DockStyle.Fill;
                 Squares[i].TabIndex = 1;
@@ -70,9 +72,9 @@ namespace BombPlane
                 {
                     if (l + npa[i] >= 0 && l + npa[i] < 10 && r + npb[i] >= 0 && r + npb[i] < 10)
                     {
-                        if (CellManager.getInstance().CellifPlane(l + npa[i], r + npb[i]) == 0)
+                        if (CellManager.getInstance().CellAifPlane(l + npa[i], r + npb[i]) == 0)
                         {
-                            Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = Color.LightBlue;
+                            Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = Color.LightGray;
                         }
                         else
                         {
@@ -145,6 +147,7 @@ namespace BombPlane
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            RivalForm.Close();
             fatherForm.Show();
         }
 
@@ -153,7 +156,7 @@ namespace BombPlane
             if(CellManager.getInstance().getPlaneNum() > 0)
             {
                 int[] lp = CellManager.getInstance().LastPlane();
-                DrawColor(Squares[lp[0] * 10 + lp[1]], lp[2], Color.LightBlue);
+                DrawColor(Squares[lp[0] * 10 + lp[1]], lp[2], Color.LightGray);
                 CellManager.getInstance().RevokeLastPlane();
             }
             
@@ -166,7 +169,16 @@ namespace BombPlane
 
         private void FinishButton_Click(object sender, EventArgs e)
         {
-            CellManager.getInstance().
+            if(CellManager.getInstance().getPlaneNum() < 3)
+            {
+                MessageBox.Show("需要放3个！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                RivalForm.Show();
+                RivalForm.updateView();
+            }
+            
         }
     }
 }
