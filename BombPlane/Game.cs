@@ -34,16 +34,21 @@ namespace BombPlane
 
         void Run()
         {
-            planePos[0] = player[0].SetPlane(0);
+            if (gameMode == 1)
+            {
+                ConnectToServer();
+                //receive game start confirmation
+            }
+            //wait for connection
 
+            planePos[0] = player[0].SetPlane(0);
             if (gameMode == 0) planePos[1] = player[1].SetPlane(1);
             else
             {
-                ConnectToServer();
-                //Message.Send(); //send my planePos
-                //Message.Recv(); //should receive the opponent's planePos
+                planePos[1] = new int[10][];
+                for (int i = 0; i < 10; i++)
+                    planePos[1][i] = new int[10];
             }
-            //communicate game information
 
             Random rand = new Random();
             if (gameMode == 0) turn = rand.Next(2);
@@ -55,7 +60,7 @@ namespace BombPlane
 
             while (true)
             {
-                int act;
+                int act = 0;
 
                 if (gameMode == 0 || turn == 0)
                 {
@@ -74,8 +79,14 @@ namespace BombPlane
 
                 if (gameMode == 1)
                 {
-                    if (turn == 0) { } //send action
-                    else { } //recv action
+                    if (turn == 0)
+                    {
+                        //send action and receive result
+                    }
+                    else
+                    {
+                        //receive action and send result
+                    }
                 }
 
                 revealed[(turn + 1) % 2][act / 10][act % 10] = true;
