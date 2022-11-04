@@ -42,6 +42,9 @@ namespace BombPlane
         private int PlaneNum = 0;
         private int[][] PlaneCenter = new int[3][] { new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 } };
         private int[][] PlanePosition = new int[10][];
+        private int whichturn = 1;
+        private int[] bombpos = new int[100];
+        private int bombnum = 0;
         private CellManager() { 
             for(int i = 0; i < 10; i++) {
                 PlanePosition[i] = new int[10];
@@ -153,9 +156,23 @@ namespace BombPlane
             }
             return PlanePosition;
         }
-        public void PlaneClear()
+        public int Turn()
         {
+            return whichturn;
+        }
+        public void SwitchTurn()
+        {
+            whichturn = -whichturn;
 
+        }
+        public void BombPlane(int num)
+        {
+            bombpos[bombnum] = num;
+            bombnum++;
+        }
+        public int LastBomb()
+        {
+            return bombpos[bombnum - 1];
         }
     }
 }

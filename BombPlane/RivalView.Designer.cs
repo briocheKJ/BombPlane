@@ -40,9 +40,9 @@
             this.TurnLabel2 = new System.Windows.Forms.Label();
             this.TurnLabel1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.HelpMeButton = new System.Windows.Forms.Button();
-            this.HelpButton = new System.Windows.Forms.Button();
             this.ConcedeButton = new System.Windows.Forms.Button();
+            this.HelpButton = new System.Windows.Forms.Button();
+            this.HelpMeButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -226,14 +226,14 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             // 
-            // HelpMeButton
+            // ConcedeButton
             // 
-            this.HelpMeButton.Location = new System.Drawing.Point(11, 30);
-            this.HelpMeButton.Name = "HelpMeButton";
-            this.HelpMeButton.Size = new System.Drawing.Size(113, 51);
-            this.HelpMeButton.TabIndex = 0;
-            this.HelpMeButton.Text = "提示";
-            this.HelpMeButton.UseVisualStyleBackColor = true;
+            this.ConcedeButton.Location = new System.Drawing.Point(9, 208);
+            this.ConcedeButton.Name = "ConcedeButton";
+            this.ConcedeButton.Size = new System.Drawing.Size(112, 51);
+            this.ConcedeButton.TabIndex = 2;
+            this.ConcedeButton.Text = "认输";
+            this.ConcedeButton.UseVisualStyleBackColor = true;
             // 
             // HelpButton
             // 
@@ -244,14 +244,14 @@
             this.HelpButton.Text = "帮助";
             this.HelpButton.UseVisualStyleBackColor = true;
             // 
-            // ConcedeButton
+            // HelpMeButton
             // 
-            this.ConcedeButton.Location = new System.Drawing.Point(9, 208);
-            this.ConcedeButton.Name = "ConcedeButton";
-            this.ConcedeButton.Size = new System.Drawing.Size(112, 51);
-            this.ConcedeButton.TabIndex = 2;
-            this.ConcedeButton.Text = "认输";
-            this.ConcedeButton.UseVisualStyleBackColor = true;
+            this.HelpMeButton.Location = new System.Drawing.Point(11, 30);
+            this.HelpMeButton.Name = "HelpMeButton";
+            this.HelpMeButton.Size = new System.Drawing.Size(113, 51);
+            this.HelpMeButton.TabIndex = 0;
+            this.HelpMeButton.Text = "提示";
+            this.HelpMeButton.UseVisualStyleBackColor = true;
             // 
             // RivalView
             // 

@@ -34,6 +34,7 @@ namespace BombPlane
                 SquaresB[i].Dock = DockStyle.Fill;
                 SquaresB[i].TabIndex = 1;
                 SquaresB[i].Text = i.ToString();
+                SquaresB[i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
             }
             for (int i = 0; i < 10; i++)
             {
@@ -49,6 +50,14 @@ namespace BombPlane
 
         public void updateView()
         {
+            if(CellManager.getInstance().Turn() == 1)
+            {
+                TurnLabel1.Text = "我方";
+            }
+            else
+            {
+                TurnLabel1.Text = "对方";
+            }
             for (int i = 0; i < SquaresA.Length; i++)
             {
                 int PlaneType = CellManager.getInstance().CellAifPlane(i);
@@ -76,6 +85,33 @@ namespace BombPlane
         {
             fatherform.Close();
         }
+        private void DrawColor(int id, int clr)
+        {
+            switch(clr)
+            {
+                case 0:
+                    SquaresB[id].BackColor = Color.LightBlue;
+                    break;
+                case 1:
+                    SquaresB[id].BackColor = Color.Yellow;
+                    break;
+                case 2:
+                    SquaresB[id].BackColor = Color.Red;
+                    break;
+            }
+        }
 
+        private void MyTable_MouseDown(object sender, MouseEventArgs e)
+        {
+            int id = int.Parse(((Label)sender).Name.Remove(0, 7));
+            if (e.Button == MouseButtons.Left && CellManager.getInstance().Turn() == 1 &&
+                SquaresB[id].BackColor == Color.LightGray) 
+            {
+                CellManager.getInstance().BombPlane(id);
+                int clr = 1;//得到当前格子是否是飞机格!!
+                DrawColor(id, clr);
+                CellManager.getInstance().SwitchTurn();
+            }
+        }
     }
 }
