@@ -147,7 +147,7 @@ namespace BombPlane
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            RivalForm.Close();
+            //RivalForm.Close();
             fatherForm.Show();
         }
 
@@ -177,6 +177,7 @@ namespace BombPlane
             {
                 RivalForm.Show();
                 RivalForm.updateView();
+                this.Hide();
             }
             
         }
