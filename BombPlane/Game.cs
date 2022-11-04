@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace BombPlane
 {
     class Game
@@ -106,4 +106,3 @@ namespace BombPlane
         }
     }
 }
-*/
