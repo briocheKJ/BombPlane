@@ -50,6 +50,7 @@ namespace BombPlane
         {
 
         }
+        //绘制飞机颜色
         Color before;
         private void DrawColor(Label positon, int dir, Color rgb)
         {
@@ -140,7 +141,7 @@ namespace BombPlane
                 }
             }
         }
-
+        //返回按钮
         private void label2_Click_1(object sender, EventArgs e)
         {
             //fatherForm.Show();
@@ -152,7 +153,7 @@ namespace BombPlane
             //RivalForm.Close();
             //fatherForm.Show();
         }
-
+        //撤销按钮
         private void UndoButton_Click(object sender, EventArgs e)
         {
             if(CellManager.getInstance().getPlaneNum() > 0)
@@ -168,7 +169,7 @@ namespace BombPlane
         {
 
         }
-
+        //完成按钮
         private void FinishButton_Click(object sender, EventArgs e)
         {
             if(CellManager.getInstance().getPlaneNum() < 3)

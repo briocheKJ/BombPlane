@@ -47,7 +47,7 @@ namespace BombPlane
             
         }
         GameForm fatherform;
-
+        //更新视图
         public void updateView()
         {
             if(CellManager.getInstance().Turn() == 1)
@@ -85,6 +85,7 @@ namespace BombPlane
         {
             fatherform.Close();
         }
+        
         private void DrawColor(int id, int clr)
         {
             switch(clr)

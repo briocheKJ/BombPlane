@@ -50,6 +50,15 @@ namespace BombPlane
                 PlanePosition[i] = new int[10];
             }
         }
+        //初始化
+        public void initailize()
+        {
+            PlaneNum = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                CellsA[i] = new Cell();
+            }
+        }
         private void transform(out int[] npa, out int[] npb, int dir)
         {
             npa = (int[])PlanA.Clone();
@@ -65,10 +74,12 @@ namespace BombPlane
                 }
             }
         }
+        //获得当前放置飞机数量
         public int getPlaneNum()
         {
             return PlaneNum;
         }
+        //放置飞机
         public void SetPlane(int posi, int posj, int dir)
         {
             PlaneCenter[PlaneNum][0] = posi;
@@ -76,10 +87,12 @@ namespace BombPlane
             PlaneCenter[PlaneNum][2] = dir;
             PlaneNum++;
         }
+        //放的上一个飞机，用于撤销操作
         public int[] LastPlane()
         {
             return PlaneCenter[PlaneNum - 1];
         }
+        //撤销一个飞机
         public void RevokeLastPlane()
         {
             PlaneNum--;
@@ -92,14 +105,7 @@ namespace BombPlane
                 CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = 0;
             }
         }
-        public void initailize()
-        {
-            PlaneNum = 0;
-            for(int i = 0; i < 100; i++)
-            {
-                CellsA[i] = new Cell();
-            }
-        }
+        //判断当前格子是否有飞机
         public int CellAifPlane(int posi, int posj)
         {
             return CellsA[posi * 10 + posj].ifPlane;
@@ -108,11 +114,12 @@ namespace BombPlane
         {
             return CellsA[num].ifPlane;
         }
+        //判断当前格子是否有飞机（B)
         public int CellBifPlane(int posi, int posj)
         {
             return CellsB[posi * 10 + posj].ifPlane;
         }
-
+        //判断当前位置是否可放飞机
         public bool Planeable(System.Windows.Forms.Label positon, int dir)
         {
             string name = positon.Name;
@@ -131,6 +138,7 @@ namespace BombPlane
             }
             return flag;
         }
+        //放置飞机（涂颜色）
         public void PlacePlane(System.Windows.Forms.Label positon, int dir)
         {
             string name = positon.Name;
@@ -145,6 +153,7 @@ namespace BombPlane
                 CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 9 ? 2 : 1);
             }
         }
+        //提交飞机位置
         public int[][] PlaneSubmit()
         {
             for(int i = 0; i < 10; i++)
@@ -156,20 +165,29 @@ namespace BombPlane
             }
             return PlanePosition;
         }
+        //开始游戏后确定哪方先行动
+        public void SetTurn(int num)
+        {
+            whichturn = num;
+        }
+        //得到当前回合归属：1我方-1对方
         public int Turn()
         {
             return whichturn;
         }
+        //交换回合
         public void SwitchTurn()
         {
             whichturn = -whichturn;
 
         }
+        //第num次炸飞机
         public void BombPlane(int num)
         {
             bombpos[bombnum] = num;
             bombnum++;
         }
+        //最新一次炸飞机的位置
         public int LastBomb()
         {
             return bombpos[bombnum - 1];
