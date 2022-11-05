@@ -14,11 +14,25 @@ namespace BombPlane
 
     class RealPlayer : Player
     {
+        private AutoResetEvent selectEvent = new AutoResetEvent(false);
+        private Control UIControl;
+        private GameForm gameForm;
+
+        public RealPlayer(Control UI)
+        {
+            gameForm = new GameForm(selectEvent);
+            UIControl = UI;
+        }
         public override int[][] SetPlane(int player)
         {
             int[][] pos;
-            pos = (int[][])CellManager.getInstance().PlaneSubmit().Clone();
+
+            UIControl.Invoke(new MethodInvoker(delegate { gameForm.Show(); }));
+
+            selectEvent.WaitOne();
             //notice UI, wait for return
+
+            pos = (int[][])CellManager.getInstance().PlaneSubmit().Clone();
             return pos;
         }
 

@@ -15,7 +15,7 @@ namespace BombPlane
 
         private int turn;
 
-        Game(int mode, Player player0, Player player1 = null)
+        public Game(int mode, Player player0, Player player1 = null)
         {
             gameMode = mode;
 
@@ -32,7 +32,7 @@ namespace BombPlane
             }
         }
 
-        void Run()
+        public void Run()
         {
             if (gameMode == 1)
             {
