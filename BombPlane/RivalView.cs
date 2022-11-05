@@ -30,12 +30,14 @@ namespace BombPlane
                 Squares[0][i].Dock = DockStyle.Fill;
                 Squares[0][i].TabIndex = 1;
                 Squares[0][i].Text = i.ToString();
+                Squares[0][i].Margin = new Padding(0);
                 Squares[1][i] = new Label();
                 Squares[1][i].BackColor = Color.LightGray;
                 Squares[1][i].Name = "Squares" + i;
                 Squares[1][i].Dock = DockStyle.Fill;
                 Squares[1][i].TabIndex = 1;
                 Squares[1][i].Text = i.ToString();
+                Squares[1][i].Margin = new Padding(0);
                 Squares[1][i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
             }
             for (int i = 0; i < 10; i++)

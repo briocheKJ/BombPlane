@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BombPlane
 {
@@ -33,6 +34,7 @@ namespace BombPlane
                 Squares[i].Dock = DockStyle.Fill;
                 Squares[i].TabIndex = 1;
                 Squares[i].Text = i.ToString();
+                Squares[i].Margin = new Padding(0);
                 Squares[i].MouseMove += new MouseEventHandler(this.CellMouseSelect);
                 Squares[i].MouseLeave += new EventHandler(this.CellMouseNotSelect);
                 Squares[i].MouseDown += new MouseEventHandler(this.CellMouseDown);
@@ -93,7 +95,7 @@ namespace BombPlane
                 {
                     if (l + npa[i] >= 0 && l + npa[i] < 10 && r + npb[i] >= 0 && r + npb[i] < 10)
                     {
-                       Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = rgb;
+                        Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = rgb;
                     }
                 }
             }
