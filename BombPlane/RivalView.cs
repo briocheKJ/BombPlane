@@ -15,6 +15,7 @@ namespace BombPlane
         AutoResetEvent actionEvent;
 
         private Label[][] Squares = new Label[2][];
+        private int RestTime = 15;
         public RivalView()
         {
            // fatherform = father;
@@ -75,6 +76,12 @@ namespace BombPlane
             else TurnLabel1.Text = "对方";
             if (ChangeColor) DrawColor((turn + 1) % 2, posx * 10 + posy, clr);
         }
+        public void updateView(int turn, bool ChangeColor, int num = 0, int clr = 0)
+        {
+            if (turn == 0) TurnLabel1.Text = "我方";
+            else TurnLabel1.Text = "对方";
+            if (ChangeColor) DrawColor((turn + 1) % 2, num, clr);
+        }
 
         private void RivalView_Load(object sender, EventArgs e)
         {
@@ -120,6 +127,42 @@ namespace BombPlane
         public void SetActionEvent(AutoResetEvent action)
         {
             actionEvent = action;
+        }
+        //计时器控件
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(RestTime > 0)
+            {
+                TimeLabel2.Text = RestTime.ToString();
+                RestTime--;
+            }
+            else
+            {
+                timer1.Stop();
+                actionEvent.Set();
+            }
+        }
+        //新的回合开始需要开始计时器
+        private void StartTimer()
+        {
+            RestTime = 15;
+            timer1.Start();
+        }
+
+        private void HelpMeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConcedeButton_Click(object sender, EventArgs e)
+        {
+            Form EndForm = new GameEndForm(false);
+            EndForm.ShowDialog();
         }
     }
 }

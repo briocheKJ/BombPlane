@@ -146,7 +146,7 @@ namespace BombPlane
         AutoResetEvent sync = new AutoResetEvent(false);
         void UpdateLabel()
         {
-            rivalForm.updateView(turn, false);
+            //rivalForm.updateView(turn, false);
             sync.Set();
         }
 

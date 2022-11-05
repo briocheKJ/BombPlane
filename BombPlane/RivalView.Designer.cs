@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.RivalTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MyTable = new System.Windows.Forms.TableLayoutPanel();
@@ -43,6 +44,7 @@
             this.ConcedeButton = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
             this.HelpMeButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -234,6 +236,7 @@
             this.ConcedeButton.TabIndex = 2;
             this.ConcedeButton.Text = "认输";
             this.ConcedeButton.UseVisualStyleBackColor = true;
+            this.ConcedeButton.Click += new System.EventHandler(this.ConcedeButton_Click);
             // 
             // HelpButton
             // 
@@ -243,6 +246,7 @@
             this.HelpButton.TabIndex = 1;
             this.HelpButton.Text = "帮助";
             this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // HelpMeButton
             // 
@@ -252,6 +256,11 @@
             this.HelpMeButton.TabIndex = 0;
             this.HelpMeButton.Text = "提示";
             this.HelpMeButton.UseVisualStyleBackColor = true;
+            this.HelpMeButton.Click += new System.EventHandler(this.HelpMeButton_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // RivalView
             // 
@@ -293,5 +302,6 @@
         private Button ConcedeButton;
         private Button HelpButton;
         private Button HelpMeButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }

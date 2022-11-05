@@ -17,7 +17,8 @@ namespace BombPlane
         //联机对战按钮
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Form ConnectForm = new ConnectForm();
+            ConnectForm.ShowDialog();
         }
         //本地对战按钮
         private void button2_Click(object sender, EventArgs e)
