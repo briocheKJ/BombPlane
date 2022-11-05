@@ -12,11 +12,13 @@ namespace BombPlane
 {
     public partial class RivalView : Form
     {
+        AutoResetEvent actionEvent;
+
         private Label[] SquaresA;
         private Label[] SquaresB;
-        public RivalView(GameForm father)
+        public RivalView()
         {
-            fatherform = father;
+           // fatherform = father;
             InitializeComponent();
             SquaresA = new Label[100];
             SquaresB = new Label[100];
@@ -46,7 +48,7 @@ namespace BombPlane
             }
             
         }
-        GameForm fatherform;
+        //GameForm fatherform;
         //更新视图
         public void updateView()
         {
@@ -83,7 +85,7 @@ namespace BombPlane
 
         private void RivalView_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fatherform.Close();
+            //fatherform.Close();
         }
         
         private void DrawColor(int id, int clr)
@@ -109,10 +111,17 @@ namespace BombPlane
                 SquaresB[id].BackColor == Color.LightGray) 
             {
                 CellManager.getInstance().BombPlane(id);
-                int clr = 1;//得到当前格子是否是飞机格!!
-                DrawColor(id, clr);
-                CellManager.getInstance().SwitchTurn();
+                //int clr = 1;//得到当前格子是否是飞机格!!
+                //DrawColor(id, clr);
+                //CellManager.getInstance().SwitchTurn();
+
+                actionEvent.Set();
             }
+        }
+
+        public void SetActionEvent(AutoResetEvent action)
+        {
+            actionEvent = action;
         }
     }
 }

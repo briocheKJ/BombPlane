@@ -41,17 +41,15 @@ namespace BombPlane
         //人机模式按钮
         private void button4_Click_1(object sender, EventArgs e)
         {
-            //Form Gameform1 = new GameForm(this);
             this.Hide();
 
-            Player p0 = new RealPlayer(this);
-            Player p1 = new RealPlayer(this);
-            Game game = new Game(0, p0, p1);
+            RivalView r = new RivalView();
+            Player p0 = new RealPlayer(this, r);
+            Player p1 = new AIPlayer_Random();
+            Game game = new Game(this, r, 0, p0, p1);
 
             Thread thread = new Thread(new ThreadStart(game.Run));
             thread.Start();
-
-            //Gameform1.Show();
         }
         //看海模式按钮
         private void button5_Click(object sender, EventArgs e)

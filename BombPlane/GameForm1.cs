@@ -15,7 +15,7 @@ namespace BombPlane
         private Label[] Squares;
         //private Form fatherForm;
         private AutoResetEvent autoReset;
-        private RivalView RivalForm;
+        //private RivalView RivalForm;
         private int direct = 0;
         public GameForm(AutoResetEvent autoReset)
         {
@@ -23,7 +23,7 @@ namespace BombPlane
             CellManager.getInstance().initailize();
             //this.fatherForm = fatherForm;
             this.autoReset = autoReset;
-            RivalForm = new RivalView(this);
+            //RivalForm = new RivalView();
             Squares = new Label[100];
             for(int i = 0; i < Squares.Length; i++)
             {
@@ -152,6 +152,7 @@ namespace BombPlane
         {
             //RivalForm.Close();
             //fatherForm.Show();
+            autoReset.Set();
         }
         //撤销按钮
         private void UndoButton_Click(object sender, EventArgs e)

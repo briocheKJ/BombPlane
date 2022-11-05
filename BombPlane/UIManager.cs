@@ -179,7 +179,6 @@ namespace BombPlane
         public void SwitchTurn()
         {
             whichturn = -whichturn;
-
         }
         //第num次炸飞机
         public void BombPlane(int num)
