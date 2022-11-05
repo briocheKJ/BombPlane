@@ -13,14 +13,16 @@ namespace BombPlane
     public partial class GameForm : Form
     {
         private Label[] Squares;
-        private Form fatherForm;
+        //private Form fatherForm;
+        private AutoResetEvent autoReset;
         private RivalView RivalForm;
         private int direct = 0;
-        public GameForm(Form fatherForm)
+        public GameForm(AutoResetEvent autoReset)
         {
             InitializeComponent();
             CellManager.getInstance().initailize();
-            this.fatherForm = fatherForm;
+            //this.fatherForm = fatherForm;
+            this.autoReset = autoReset;
             RivalForm = new RivalView(this);
             Squares = new Label[100];
             for(int i = 0; i < Squares.Length; i++)
@@ -141,14 +143,14 @@ namespace BombPlane
 
         private void label2_Click_1(object sender, EventArgs e)
         {
-            fatherForm.Show();
+            //fatherForm.Show();
             this.Close();
         }
 
         private void GameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             //RivalForm.Close();
-            fatherForm.Show();
+            //fatherForm.Show();
         }
 
         private void UndoButton_Click(object sender, EventArgs e)
@@ -175,9 +177,12 @@ namespace BombPlane
             }
             else
             {
-                RivalForm.Show();
-                RivalForm.updateView();
-                this.Hide();
+                //RivalForm.Show();
+                //RivalForm.updateView();
+                //this.Hide();
+
+                autoReset.Set();
+                this.Close();
             }
             
         }
