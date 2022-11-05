@@ -24,9 +24,7 @@ namespace BombPlane
         {
             TopPanel.Visible = false;
             LocalPanel.Visible = true;
-            /*Form Gameform1 = new GameForm(this);
-            this.Hide();
-            Gameform1.Show();*/
+            
         }
         //帮助按钮
         private void button3_Click(object sender, EventArgs e)
@@ -43,7 +41,9 @@ namespace BombPlane
         //人机模式按钮
         private void button4_Click_1(object sender, EventArgs e)
         {
-
+            Form Gameform1 = new GameForm(this);
+            this.Hide();
+            Gameform1.Show();
         }
         //看海模式按钮
         private void button5_Click(object sender, EventArgs e)
