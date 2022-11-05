@@ -14,67 +14,72 @@ namespace BombPlane
     {
         AutoResetEvent actionEvent;
 
-        private Label[] SquaresA;
-        private Label[] SquaresB;
+        private Label[][] Squares = new Label[2][];
         public RivalView()
         {
            // fatherform = father;
             InitializeComponent();
-            SquaresA = new Label[100];
-            SquaresB = new Label[100];
-            for (int i = 0; i < SquaresA.Length; i++)
+            Squares[0] = new Label[100];
+            Squares[1] = new Label[100];
+            for (int i = 0; i < Squares[0].Length; i++)
             {
-                SquaresA[i] = new Label();
-                SquaresA[i].BackColor = Color.LightGray;
-                SquaresA[i].Name = "Squares" + i;
-                SquaresA[i].Dock = DockStyle.Fill;
-                SquaresA[i].TabIndex = 1;
-                SquaresA[i].Text = i.ToString();
-                SquaresB[i] = new Label();
-                SquaresB[i].BackColor = Color.LightGray;
-                SquaresB[i].Name = "Squares" + i;
-                SquaresB[i].Dock = DockStyle.Fill;
-                SquaresB[i].TabIndex = 1;
-                SquaresB[i].Text = i.ToString();
-                SquaresB[i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
+                Squares[0][i] = new Label();
+                Squares[0][i].BackColor = Color.LightGray;
+                Squares[0][i].Name = "Squares" + i;
+                Squares[0][i].Dock = DockStyle.Fill;
+                Squares[0][i].TabIndex = 1;
+                Squares[0][i].Text = i.ToString();
+                Squares[1][i] = new Label();
+                Squares[1][i].BackColor = Color.LightGray;
+                Squares[1][i].Name = "Squares" + i;
+                Squares[1][i].Dock = DockStyle.Fill;
+                Squares[1][i].TabIndex = 1;
+                Squares[1][i].Text = i.ToString();
+                Squares[1][i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
             }
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    this.RivalTable.Controls.Add(SquaresA[i * 10 + j], j, i);
-                    this.MyTable.Controls.Add(SquaresB[i * 10 + j], j, i);
+                    this.RivalTable.Controls.Add(Squares[0][i * 10 + j], j, i);
+                    this.MyTable.Controls.Add(Squares[1][i * 10 + j], j, i);
                 }
             }
             
         }
         //GameForm fatherform;
         //更新视图
-        public void updateView()
+        public void initView()
         {
-            if(CellManager.getInstance().Turn() == 1)
-            {
-                TurnLabel1.Text = "我方";
-            }
-            else
-            {
-                TurnLabel1.Text = "对方";
-            }
-            for (int i = 0; i < SquaresA.Length; i++)
+            for (int i = 0; i < 100; i++)
             {
                 int PlaneType = CellManager.getInstance().CellAifPlane(i);
                 if (PlaneType == 0)
                 {
-                    SquaresA[i].BackColor = Color.LightGray;
+                    Squares[0][i].BackColor = Color.LightGray;
                 }
                 else if (PlaneType == 1)
                 {
-                    SquaresA[i].BackColor = Color.Violet;
+                    Squares[0][i].BackColor = Color.Violet;
                 }
                 else if (PlaneType == 2)
                 {
-                    SquaresA[i].BackColor = Color.DeepSkyBlue;
+                    Squares[0][i].BackColor = Color.DeepSkyBlue;
                 }
+            }
+        }
+        //更新视图，turn轮到谁，xy坐标，clr 0未命中 1飞机 2飞机头
+        public void updateView(int turn, int posx, int posy, int clr)
+        {
+            if (turn == 0)
+            {
+                DrawColor(0, posx * 10 + posy, clr);
+                TurnLabel1.Text = "我方";
+            }
+            else
+            {
+                DrawColor(1, posx * 10 + posy, clr);
+                TurnLabel1.Text = "对方";
             }
         }
 
@@ -87,19 +92,19 @@ namespace BombPlane
         {
             //fatherform.Close();
         }
-        
-        private void DrawColor(int id, int clr)
+        //画颜色
+        private void DrawColor(int turn, int id, int clr)
         {
             switch(clr)
             {
                 case 0:
-                    SquaresB[id].BackColor = Color.LightBlue;
+                    Squares[turn][id].BackColor = Color.LightBlue;
                     break;
                 case 1:
-                    SquaresB[id].BackColor = Color.Yellow;
+                    Squares[turn][id].BackColor = Color.Yellow;
                     break;
                 case 2:
-                    SquaresB[id].BackColor = Color.Red;
+                    Squares[turn][id].BackColor = Color.Red;
                     break;
             }
         }
@@ -108,7 +113,7 @@ namespace BombPlane
         {
             int id = int.Parse(((Label)sender).Name.Remove(0, 7));
             if (e.Button == MouseButtons.Left && CellManager.getInstance().Turn() == 1 &&
-                SquaresB[id].BackColor == Color.LightGray) 
+                Squares[1][id].BackColor == Color.LightGray) 
             {
                 CellManager.getInstance().BombPlane(id);
                 //int clr = 1;//得到当前格子是否是飞机格!!

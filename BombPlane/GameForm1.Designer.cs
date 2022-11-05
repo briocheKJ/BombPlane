@@ -135,7 +135,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Location = new System.Drawing.Point(100, 200);
             this.Name = "GameForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

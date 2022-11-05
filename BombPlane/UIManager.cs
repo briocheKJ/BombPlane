@@ -191,5 +191,19 @@ namespace BombPlane
         {
             return bombpos[bombnum - 1];
         }
+        //修改CellsB
+        public void UpdateCellsB(int posx, int posy, int type)
+        {
+            int id = posx * 10 + posy;
+            if(type == -1)
+            {
+                CellsB[id].ifBomb = false;
+            }
+            else
+            {
+                CellsB[id].ifBomb = true;
+                CellsB[id].ifPlane = type;
+            }
+        }
     }
 }

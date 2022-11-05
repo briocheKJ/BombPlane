@@ -182,6 +182,7 @@
             this.Controls.Add(this.LocalPanel);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StartForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bomb Planes";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.LocalPanel.ResumeLayout(false);
