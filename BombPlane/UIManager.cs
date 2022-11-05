@@ -42,7 +42,7 @@ namespace BombPlane
         private int PlaneNum = 0;
         private int[][] PlaneCenter = new int[3][] { new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 }, new int[3] { 0, 0, 0 } };
         private int[][] PlanePosition = new int[10][];
-        private int whichturn = 0;
+        private int whichturn = -1;
         private int[] bombpos = new int[100];
         private int bombnum = 0;
         private CellManager() { 
@@ -178,7 +178,7 @@ namespace BombPlane
         //交换回合
         public void SwitchTurn()
         {
-            whichturn = -whichturn;
+            whichturn = (whichturn + 1) % 2;
         }
         //第num次炸飞机
         public void BombPlane(int num)

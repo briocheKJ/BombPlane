@@ -60,21 +60,19 @@ namespace BombPlane
             }
 
             Random rand = new Random();
-            if (gameMode == 0) //turn = rand.Next(2);
-                turn = 0;
+            if (gameMode == 0) turn = rand.Next(2);
             else
             {
                 //Message.Recv(); //should receive turn order
             }
             //decide turn order
 
-            CellManager.getInstance().SetTurn(turn == 1 ? 1 : -1);
+            CellManager.getInstance().SetTurn(turn);
             UIControl.Invoke(new MethodInvoker(ShowRivalForm));
+            rivalForm.initView();
 
             while (true)
             {
-                int act = 0;
-
                 if (gameMode == 0 || turn == 0)
                 {
                     int[][] state = new int[10][];
@@ -88,14 +86,16 @@ namespace BombPlane
                             else state[i][j] = -1;
 
                     CellManager.getInstance().SwitchTurn();
-                    UIControl.Invoke(new MethodInvoker(UpdateRivalForm));
+                    UIControl.Invoke(new MethodInvoker(UpdateLabel));
+                    sync.WaitOne();
                     
                     act = player[turn].TakeAction(state);
                 }
                 else
                 {
                     CellManager.getInstance().SwitchTurn();
-                    UIControl.Invoke(new MethodInvoker(UpdateRivalForm));
+                    UIControl.Invoke(new MethodInvoker(UpdateLabel));
+                    sync.WaitOne();
                 }
 
                 if (gameMode == 1)
@@ -109,9 +109,11 @@ namespace BombPlane
                         //receive action and send result
                     }
                 }
+                else res = planePos[(turn + 1) % 2][act / 10][act % 10];
 
                 revealed[(turn + 1) % 2][act / 10][act % 10] = true;
-
+                UIControl.Invoke(new MethodInvoker(UpdateColor));
+                sync.WaitOne();
                 //process action and display on UI
 
                 turn = (turn + 1) % 2;
@@ -127,7 +129,7 @@ namespace BombPlane
 
             //game over screen
 
-            UIControl.Invoke(new MethodInvoker(delegate { UIControl.Show(); }));
+            UIControl.Invoke(new MethodInvoker(delegate { rivalForm.Close(); UIControl.Show(); }));
         }
 
         void ConnectToServer()
@@ -140,9 +142,18 @@ namespace BombPlane
             rivalForm.Show();
         }
 
-        void UpdateRivalForm()
+        int act = 0, res = 0;
+        AutoResetEvent sync = new AutoResetEvent(false);
+        void UpdateLabel()
         {
-            rivalForm.updateView();
+            rivalForm.updateView(turn, false);
+            sync.Set();
+        }
+
+        void UpdateColor()
+        {
+            rivalForm.updateView(turn, true, act / 10, act % 10, res);
+            sync.Set();
         }
     }
 }

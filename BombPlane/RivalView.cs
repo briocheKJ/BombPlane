@@ -69,18 +69,11 @@ namespace BombPlane
             }
         }
         //更新视图，turn轮到谁，xy坐标，clr 0未命中 1飞机 2飞机头
-        public void updateView(int turn, int posx, int posy, int clr)
+        public void updateView(int turn, bool ChangeColor, int posx = 0, int posy = 0, int clr = 0)
         {
-            if (turn == 0)
-            {
-                DrawColor(0, posx * 10 + posy, clr);
-                TurnLabel1.Text = "我方";
-            }
-            else
-            {
-                DrawColor(1, posx * 10 + posy, clr);
-                TurnLabel1.Text = "对方";
-            }
+            if (turn == 0) TurnLabel1.Text = "我方";
+            else TurnLabel1.Text = "对方";
+            if (ChangeColor) DrawColor((turn + 1) % 2, posx * 10 + posy, clr);
         }
 
         private void RivalView_Load(object sender, EventArgs e)
