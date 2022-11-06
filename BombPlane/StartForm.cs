@@ -55,7 +55,15 @@ namespace BombPlane
         //看海模式按钮
         private void button5_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            RivalView r = new RivalView();
+            Player p0 = new AIPlayer_Random();
+            Player p1 = new AIPlayer_Random();
+            Game game = new Game(this, r, 0, p0, p1);
+
+            Thread thread = new Thread(new ThreadStart(game.Run));
+            thread.Start();
         }
         //本地模式返回上级菜单
         private void button6_Click(object sender, EventArgs e)

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +10,8 @@ namespace BombPlane
 {
     class Game
     {
+        private Socket socket;
+
         private StartForm UIControl;
         private RivalView rivalForm;
 
@@ -40,12 +44,15 @@ namespace BombPlane
 
         public void Run()
         {
-            if (gameMode == 1)
+            Random rand = new Random();
+            if (gameMode == 0) turn = rand.Next(2);
+            else
             {
                 ConnectToServer();
-                //receive game start confirmation
+                Msg msg = Msg.Receive(socket);
+                turn = ((ReadyMsg)msg).proi ? 1 : 0;
             }
-            //wait for connection
+            //wait for connection, decide turn order
 
             planePos = new int[2][][];
 
@@ -59,17 +66,9 @@ namespace BombPlane
                     planePos[1][i] = new int[10];
             }
 
-            Random rand = new Random();
-            if (gameMode == 0) turn = rand.Next(2);
-            else
-            {
-                //Message.Recv(); //should receive turn order
-            }
-            //decide turn order
-
             CellManager.getInstance().SetTurn(turn);
             UIControl.Invoke(new MethodInvoker(ShowRivalForm));
-            rivalForm.initView();
+            sync.WaitOne();
 
             while (true)
             {
@@ -102,10 +101,18 @@ namespace BombPlane
                 {
                     if (turn == 0)
                     {
+                        OperationMsg sending = new OperationMsg(act / 10, act % 10);
+                        sending.Send(socket);
+
+                        Msg recving = Msg.Receive(socket);
+                        res = ((FeedbackMsg)recving).feedback;
                         //send action and receive result
                     }
                     else
                     {
+                        Msg recving = Msg.Receive(socket);
+                        FeedbackMsg sending = new FeedbackMsg(((OperationMsg)recving).opx * 10 + ((OperationMsg)recving).opy);
+                        sending.Send(socket);
                         //receive action and send result
                     }
                 }
@@ -127,26 +134,41 @@ namespace BombPlane
             }
             //game loop
 
-            //game over screen
+            UIControl.Invoke(new MethodInvoker(delegate
+            {
+                GameEndForm gameOverForm = new GameEndForm(turn == 1);
+                gameOverForm.Show();
+                Thread.Sleep(2000);
+                gameOverForm.Close();
+                //game over screen
 
-            UIControl.Invoke(new MethodInvoker(delegate { rivalForm.Close(); UIControl.Show(); }));
+                rivalForm.Close();
+                UIControl.Show();
+                //back to start screen
+            }));
         }
 
         void ConnectToServer()
         {
-            //todo
+            string ip = "127.0.0.1";
+            int port = 1111;
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            EndPoint point = new IPEndPoint(IPAddress.Parse(ip), port);
+            socket.Connect(point);
         }
 
         void ShowRivalForm()
         {
             rivalForm.Show();
+            rivalForm.initView(turn);
+            sync.Set();
         }
 
         int act = 0, res = 0;
         AutoResetEvent sync = new AutoResetEvent(false);
         void UpdateLabel()
         {
-            //rivalForm.updateView(turn, false);
+            rivalForm.updateView(turn, false, 0, 0, 0);
             sync.Set();
         }
 

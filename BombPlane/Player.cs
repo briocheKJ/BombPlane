@@ -75,6 +75,8 @@ namespace BombPlane
                 if (state[act / 10][act % 10] == -1) break;
             }
 
+            Thread.Sleep(1000);
+
             return act;
         }
     }

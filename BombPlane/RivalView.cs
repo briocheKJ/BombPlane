@@ -52,8 +52,10 @@ namespace BombPlane
         }
         //GameForm fatherform;
         //更新视图
-        public void initView()
+        public void initView(int turn)
         {
+            if (turn == 0) TurnLabel1.Text = "我方";
+            else TurnLabel1.Text = "对方";
             for (int i = 0; i < 100; i++)
             {
                 int PlaneType = CellManager.getInstance().CellAifPlane(i);
