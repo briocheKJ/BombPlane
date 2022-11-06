@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "M9kpMJ5aVRmoC2ZmAUZmdLYwVvQQjKamWOnJKA9umcTkR/4CLZ8pXaomRH2jvU8hgAyFWi+AJ2JrWt2MexQG4g==",
+  "dgSpecHash": "yIxGUfugihBDnSSi5HwEF6+T3JNWTLFFpFB0e2lwwBQNNKrSHcDsZxcgnRgSicRxpXBV6wpBHiHwAfa/TAa9ag==",
   "success": true,
-  "projectFilePath": "E:\\Code\\CSharp\\BombPlane\\BombPlane\\BombPlane\\BombPlane.csproj",
+  "projectFilePath": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
+    "C:\\Users\\Atoposyz\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Atoposyz\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
   ],
   "logs": []
 }

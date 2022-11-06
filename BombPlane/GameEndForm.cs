@@ -18,10 +18,13 @@ namespace BombPlane
             InitializeComponent();
             if(vic == false)
             {
-                this.BackgroundImage = ((System.Drawing.Image)Resources.Defeat);
+                pictureBox1.Image = Resources.Defeat;
                 this.Width = 450;
             }
-            
+            else
+            {
+                pictureBox1.Image = Resources.Victory;
+            }
         }
         private void GameEndForm_Load(object sender, EventArgs e)
         {
