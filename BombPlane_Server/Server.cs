@@ -27,8 +27,21 @@ namespace BombPlane
                 Socket socket2 = server.Accept();
                 Console.WriteLine("a client connect.....");
 
-                (new ReadyMsg(true)).Send(socket1);
-                (new ReadyMsg(false)).Send(socket2);
+                Random random = new Random();
+                bool turn = (random.Next(2) == 1);
+                (new ReadyMsg(turn)).Send(socket1);
+                (new ReadyMsg(!turn)).Send(socket2);
+
+                StartMsg start1 = (StartMsg)Msg.Receive(socket1);
+                StartMsg start2 = (StartMsg)Msg.Receive(socket2);
+                if (!start1.ack || !start2.ack)
+                {
+                    start1.ack = false;
+                    start2.ack = false;
+                }
+                
+                start1.Send(socket2);
+                start2.Send(socket1);
 
                 Transmitor trans1 = new Transmitor(socket1, socket2);
                 Transmitor trans2 = new Transmitor(socket2, socket1);

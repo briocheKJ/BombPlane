@@ -64,6 +64,11 @@ namespace BombPlane
                 planePos[1] = new int[10][];
                 for (int i = 0; i < 10; i++)
                     planePos[1][i] = new int[10];
+
+                StartMsg start = new StartMsg(true);
+                start.Send(socket);
+                Msg msg = Msg.Receive(socket);
+                //Opponent ready
             }
 
             CellManager.getInstance().SetTurn(turn);

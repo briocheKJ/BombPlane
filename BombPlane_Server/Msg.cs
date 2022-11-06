@@ -37,6 +37,9 @@ namespace BombPlane
                 case "ReadyMsg":
                     msg = (Msg)(JsonConvert.DeserializeObject<ReadyMsg>(jsonString));
                     break;
+                case "StartMsg":
+                    msg = (Msg)(JsonConvert.DeserializeObject<StartMsg>(jsonString));
+                    break;
                 case "OperationMsg":
                     msg = (Msg)(JsonConvert.DeserializeObject<OperationMsg>(jsonString));
                     break;
@@ -68,6 +71,18 @@ namespace BombPlane
         }
     }
 
+    class StartMsg : Msg
+    {
+        public bool ack; //if true, no error
+        public StartMsg(bool ack) : base("StartMsg")
+        {
+            this.ack = ack;
+        }
+        override public void print()
+        {
+            Console.WriteLine(ack ? "Game Start Successfully" : "Game Start Failed");
+        }
+    }
     class OperationMsg : Msg
     {
         public int opx;
