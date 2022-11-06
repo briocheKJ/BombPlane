@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -37,16 +36,56 @@ namespace BombPlane
             }
             return null;
         }
+        abstract public void print();
     }
     class ReadyMsg : Msg
     {
-        String text = "ack";
-        public ReadyMsg() : base("ReadyMsg")
+        public bool proi; //if true, I first
+        public ReadyMsg(bool priority) : base("ReadyMsg")
+        {
+            this.proi = priority;
+        }
+        override public void print()
+        {
+            Console.WriteLine(proi?"I first":"opponent first");
+        }
+    }
+
+    class OperationMsg : Msg
+    {
+        public int opx;
+        public int opy;
+        public OperationMsg(int opx,int opy) : base("OperationMsg")
+        {
+            this.opx = opx;
+            this.opy = opy;
+        }
+        override public void print()
+        {
+            Console.WriteLine("operation:({0},{1})",opx,opy);
+        }
+    }
+    class FeedbackMsg : Msg
+    {
+        public int feedback;
+        public FeedbackMsg(int feedback) : base("FeedbackMsg")
+        {
+            this.feedback = feedback;
+        }
+        override public void print()
+        {
+            Console.WriteLine("feedback:{0}",feedback);
+        }
+    }
+    class EndMsg : Msg
+    {
+        public string text = "GoodBye!!";
+        public EndMsg() : base("EndMsg")
         {
         }
-        public void print()
+        public override void print()
         {
-            Console.WriteLine(text);
+            Console.WriteLine("end:{0}", text);
         }
     }
 }
