@@ -14,29 +14,31 @@ namespace BombPlane
         static int port = 1111;
         public static void Main(string[] args)
         {
-            Console.WriteLine("服务器启动.....");
+            Console.WriteLine("server starting.....");
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             EndPoint point = new IPEndPoint(IPAddress.Parse(ip), port);
             server.Bind(point);
             server.Listen(100);
+            while(true)
+            {
+                Socket socket1 = server.Accept();
+                Console.WriteLine("a client connect.....");
 
-            Socket socket1 = server.Accept();
-            Console.WriteLine("a client connect.....");
+                Socket socket2 = server.Accept();
+                Console.WriteLine("a client connect.....");
 
-            Socket socket2 = server.Accept();
-            Console.WriteLine("a client connect.....");
+                (new ReadyMsg(true)).Send(socket1);
+                (new ReadyMsg(false)).Send(socket2);
 
-            (new ReadyMsg()).Send(socket1);
-            (new ReadyMsg()).Send(socket2);
+                Transmitor trans1 = new Transmitor(socket1, socket2);
+                Transmitor trans2 = new Transmitor(socket2, socket1);
 
-            Transmitor trans1 = new Transmitor(socket1, socket2);
-            Transmitor trans2 = new Transmitor(socket2, socket1);
+                Thread thread1 = new Thread(trans1.Runner);
+                Thread thread2 = new Thread(trans2.Runner);
 
-            Thread thread1 = new Thread(trans1.Runner);
-            Thread thread2 = new Thread(trans2.Runner);
-
-            thread1.Start();
-            thread2.Start();
+                thread1.Start();
+                thread2.Start();
+            }
         }
     }
     class Transmitor
@@ -52,11 +54,21 @@ namespace BombPlane
         {
             while (true)
             {
-                byte[] bytes = new byte[1024];
-                int len = socket1.Receive(bytes);
-                string content = Encoding.UTF8.GetString(bytes, 0, len);
-                socket1.Send(Encoding.UTF8.GetBytes(content));
+                Msg msg=Msg.Receive(socket2);
+                if(msg==null)
+                {
+                    Console.WriteLine("null error");
+                    break;
+                }
+                if (msg.msgType == "EndMsg")
+                {
+                    msg.print();
+                    break;
+                }
+                msg.Send(socket1);
+                Console.WriteLine("transmit successfully!");
             }
+            socket1.Close();
         }
     }
     
