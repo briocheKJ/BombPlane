@@ -55,6 +55,7 @@ namespace BombPlane
             while (true)
             {
                 Msg msg=Msg.Receive(socket2);
+                msg.print();
                 if(msg==null)
                 {
                     Console.WriteLine("null error");

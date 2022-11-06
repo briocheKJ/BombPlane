@@ -30,12 +30,28 @@ namespace BombPlane
             string type = Encoding.UTF8.GetString(bytes, 0, len);
             len = socket.Receive(bytes);
             string jsonString = Encoding.UTF8.GetString(bytes, 0, len);
-            if (type == "ReadyMsg")
+
+            Msg msg = null;
+            switch (type)
             {
-                Msg msg = (Msg)(JsonConvert.DeserializeObject<ReadyMsg>(jsonString));
-                return msg;
+                case "ReadyMsg":
+                    msg = (Msg)(JsonConvert.DeserializeObject<ReadyMsg>(jsonString));
+                    break;
+                case "OperationMsg":
+                    msg = (Msg)(JsonConvert.DeserializeObject<OperationMsg>(jsonString));
+                    break;
+                case "FeedbackMsg":
+                    msg = (Msg)(JsonConvert.DeserializeObject<FeedbackMsg>(jsonString));
+                    break;
+                case "EndMsg":
+                    msg = (Msg)(JsonConvert.DeserializeObject<EndMsg>(jsonString));
+                    break;
+                default:
+                    msg = null;
+                    break;
             }
-            return null;
+
+            return msg;
         }
         abstract public void print();
     }

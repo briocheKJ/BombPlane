@@ -111,7 +111,12 @@ namespace BombPlane
                     else
                     {
                         Msg recving = Msg.Receive(socket);
-                        FeedbackMsg sending = new FeedbackMsg(((OperationMsg)recving).opx * 10 + ((OperationMsg)recving).opy);
+                        int opx = ((OperationMsg)recving).opx;
+                        int opy = ((OperationMsg)recving).opy;
+                        act = opx * 10 + opy;
+                        res = planePos[0][opx][opy];
+
+                        FeedbackMsg sending = new FeedbackMsg(res);
                         sending.Send(socket);
                         //receive action and send result
                     }
@@ -119,6 +124,7 @@ namespace BombPlane
                 else res = planePos[(turn + 1) % 2][act / 10][act % 10];
 
                 revealed[(turn + 1) % 2][act / 10][act % 10] = true;
+                planePos[(turn + 1) % 2][act / 10][act % 10] = res;
                 UIControl.Invoke(new MethodInvoker(UpdateColor));
                 sync.WaitOne();
                 //process action and display on UI
@@ -138,7 +144,16 @@ namespace BombPlane
             {
                 GameEndForm gameOverForm = new GameEndForm(turn == 1);
                 gameOverForm.Show();
-                Thread.Sleep(2000);
+
+                AutoResetEvent clock = new AutoResetEvent(false);
+                Thread thread = new Thread(new ThreadStart(() =>
+                {
+                    Thread.Sleep(2000);
+                    clock.Set();
+                }));
+                thread.Start();
+                clock.WaitOne();
+
                 gameOverForm.Close();
                 //game over screen
 
