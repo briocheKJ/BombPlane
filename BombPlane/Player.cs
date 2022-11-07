@@ -99,6 +99,8 @@ namespace BombPlane
                     int ny = y + rotate(npx[j], npy[j], r, false);
                     pos[nx][ny] = (j == 0) ? 2 : 1;
                 }
+
+                CellManager.getInstance().PlacePlane(x, y, r);
             }
 
             //AI set plane

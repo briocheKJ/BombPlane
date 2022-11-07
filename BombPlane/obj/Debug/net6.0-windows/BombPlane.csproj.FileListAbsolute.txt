@@ -22,7 +22,6 @@ D:\JLU吉林大学\5大三上\C#程序设计\BombPlane\BombPlane\obj\Debug\net6.
 D:\JLU吉林大学\5大三上\C#程序设计\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.GameEndForm.resources
 D:\JLU吉林大学\5大三上\C#程序设计\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.Properties.Resources.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.csproj.AssemblyReference.cache
-E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.ConnectForm.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.GameEndForm.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.GameForm.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.HelpForm.resources
@@ -106,3 +105,4 @@ E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.csproj.
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.genruntimeconfig.cache
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\ref\BombPlane.dll
 D:\JLU吉林大学\5大三上\C#程序设计\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.WaitForm.resources
+E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.WaitForm.resources
