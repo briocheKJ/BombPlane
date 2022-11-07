@@ -52,13 +52,14 @@ namespace BombPlane
         }
         //GameForm fatherform;
         //更新视图
-        public void initView(int turn)
+        public void initView(int turn, int[][] state)
         {
             if (turn == 0) TurnLabel1.Text = "我方";
             else TurnLabel1.Text = "对方";
             for (int i = 0; i < 100; i++)
             {
-                int PlaneType = CellManager.getInstance().CellAifPlane(i);
+                //int PlaneType = CellManager.getInstance().CellAifPlane(i);
+                int PlaneType = state[i / 10][i % 10];
                 if (PlaneType == 0)
                 {
                     Squares[0][i].BackColor = Color.LightGray;
