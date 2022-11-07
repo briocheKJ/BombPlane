@@ -186,7 +186,7 @@ namespace BombPlane
         void ShowRivalForm()
         {
             rivalForm.Show();
-            rivalForm.initView(turn);
+            rivalForm.initView(turn, planePos[0]);
             sync.Set();
         }
 
