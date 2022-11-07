@@ -60,7 +60,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Location = new System.Drawing.Point(52, 127);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -69,13 +69,12 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "联机对战";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(52, 208);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -90,7 +89,7 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button3.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button3.Location = new System.Drawing.Point(52, 291);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -105,7 +104,7 @@
             // 
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CloseButton.BackColor = System.Drawing.Color.Transparent;
-            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseButton.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CloseButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.CloseButton.Location = new System.Drawing.Point(52, 370);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -118,6 +117,7 @@
             // 
             // button5
             // 
+            this.button5.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button5.Location = new System.Drawing.Point(24, 116);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(162, 60);
@@ -128,6 +128,7 @@
             // 
             // button4
             // 
+            this.button4.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.Location = new System.Drawing.Point(24, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(162, 61);
@@ -142,7 +143,7 @@
             this.LocalPanel.Controls.Add(this.button6);
             this.LocalPanel.Controls.Add(this.button5);
             this.LocalPanel.Controls.Add(this.button4);
-            this.LocalPanel.Location = new System.Drawing.Point(282, 188);
+            this.LocalPanel.Location = new System.Drawing.Point(270, 188);
             this.LocalPanel.Name = "LocalPanel";
             this.LocalPanel.Size = new System.Drawing.Size(225, 325);
             this.LocalPanel.TabIndex = 6;
@@ -150,6 +151,7 @@
             // 
             // button6
             // 
+            this.button6.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button6.Location = new System.Drawing.Point(24, 213);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(162, 60);

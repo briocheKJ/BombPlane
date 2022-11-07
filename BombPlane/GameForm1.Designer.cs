@@ -34,8 +34,11 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.UndoButton = new System.Windows.Forms.Button();
             this.FinishButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -88,8 +91,9 @@
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.GreenYellow;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(507, 464);
             this.label2.Name = "label2";
@@ -103,6 +107,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.UndoButton);
             this.flowLayoutPanel1.Controls.Add(this.FinishButton);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(507, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -111,6 +116,7 @@
             // 
             // UndoButton
             // 
+            this.UndoButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UndoButton.Location = new System.Drawing.Point(3, 3);
             this.UndoButton.Name = "UndoButton";
             this.UndoButton.Size = new System.Drawing.Size(163, 79);
@@ -121,6 +127,7 @@
             // 
             // FinishButton
             // 
+            this.FinishButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FinishButton.Location = new System.Drawing.Point(3, 88);
             this.FinishButton.Name = "FinishButton";
             this.FinishButton.Size = new System.Drawing.Size(160, 80);
@@ -129,6 +136,26 @@
             this.FinishButton.UseVisualStyleBackColor = true;
             this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("方正粗雅宋_GBK", 12.10084F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(3, 174);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(150, 256);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "提示";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("方正粗雅宋_GBK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(3, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(141, 243);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "右键切换方向\r\n左键放下飞机\r\n只能放下三个\r\n放错可点撤销\r\n放完点击完成\r\n适度游戏益脑\r\n沉迷游戏伤身\r\n合理安排时间\r\n享受健康生活";
+            // 
             // GameForm
             // 
             this.ClientSize = new System.Drawing.Size(673, 547);
@@ -136,9 +163,11 @@
             this.Location = new System.Drawing.Point(100, 200);
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "放置飞机";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -150,5 +179,7 @@
         private Button UndoButton;
         private FlowLayoutPanel flowLayoutPanel1;
         private Button FinishButton;
+        private Label label1;
+        private GroupBox groupBox1;
     }
 }

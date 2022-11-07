@@ -17,19 +17,7 @@ namespace BombPlane
         //联机对战按钮
         private void button1_Click(object sender, EventArgs e)
         {
-            //Form ConnectForm = new ConnectForm();
-            //ConnectForm.ShowDialog();
-            this.Hide();
 
-            RivalView r = new RivalView();
-            Player p0 = new RealPlayer(this, r);
-            Game game = new Game(this, r, 1, p0);
-
-            Thread thread = new Thread(game.Run);
-            thread.Start();
-
-            LocalPanel.Visible = false;
-            TopPanel.Visible = true;
         }
         //本地对战按钮
         private void button2_Click(object sender, EventArgs e)
@@ -60,11 +48,8 @@ namespace BombPlane
             Player p1 = new AIPlayer_Random();
             Game game = new Game(this, r, 0, p0, p1);
 
-            Thread thread = new Thread(game.Run);
+            Thread thread = new Thread(new ThreadStart(game.Run));
             thread.Start();
-
-            LocalPanel.Visible = false;
-            TopPanel.Visible = true;
         }
         //看海模式按钮
         private void button5_Click(object sender, EventArgs e)
@@ -78,9 +63,6 @@ namespace BombPlane
 
             Thread thread = new Thread(new ThreadStart(game.Run));
             thread.Start();
-
-            LocalPanel.Visible = false;
-            TopPanel.Visible = true;
         }
         //本地模式返回上级菜单
         private void button6_Click(object sender, EventArgs e)
