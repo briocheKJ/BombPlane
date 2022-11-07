@@ -49,7 +49,14 @@ namespace BombPlane
             else
             {
                 ConnectToServer();
+
+                waitStr = "等待对方连接服务器...";
+                UIControl.Invoke(new MethodInvoker(ShowWaitForm));
+
                 Msg msg = Msg.Receive(socket);
+
+                UIControl.Invoke(new MethodInvoker(CloseWaitForm));
+
                 turn = ((ReadyMsg)msg).proi ? 1 : 0;
             }
             //wait for connection, decide turn order
@@ -58,7 +65,6 @@ namespace BombPlane
 
             planePos[0] = player[0].SetPlane(0);
             if (gameMode == 0) planePos[1] = player[1].SetPlane(1);
-                //planePos[1] = (int[][])planePos[0].Clone();
             else
             {
                 planePos[1] = new int[10][];
@@ -67,7 +73,14 @@ namespace BombPlane
 
                 StartMsg start = new StartMsg(true);
                 start.Send(socket);
+
+                waitStr = "等待对方放置飞机...";
+                UIControl.Invoke(new MethodInvoker(ShowWaitForm));
+
                 Msg msg = Msg.Receive(socket);
+
+                UIControl.Invoke(new MethodInvoker(CloseWaitForm));
+
                 //Opponent ready
             }
 
@@ -177,6 +190,7 @@ namespace BombPlane
         void ConnectToServer()
         {
             string ip = "49.140.58.108";
+            //string ip = "127.0.0.1"; //local debugging
             int port = 1111;
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             EndPoint point = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -202,6 +216,20 @@ namespace BombPlane
         {
             rivalForm.updateView(turn, true, act / 10, act % 10, res);
             sync.Set();
+        }
+
+        string waitStr;
+        WaitForm waitForm;
+
+        void ShowWaitForm()
+        {
+            waitForm = new WaitForm(waitStr);
+            waitForm.Show();
+        }
+
+        void CloseWaitForm()
+        {
+            waitForm.Close();
         }
     }
 }

@@ -17,14 +17,20 @@ namespace BombPlane
         //联机对战按钮
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            RivalView r = new RivalView();
+            Player p0 = new RealPlayer(this, r);
+            Game game = new Game(this, r, 1, p0);
+
+            Thread thread = new Thread(new ThreadStart(game.Run));
+            thread.Start();
         }
         //本地对战按钮
         private void button2_Click(object sender, EventArgs e)
         {
             TopPanel.Visible = false;
             LocalPanel.Visible = true;
-
         }
         //帮助按钮
         private void button3_Click(object sender, EventArgs e)

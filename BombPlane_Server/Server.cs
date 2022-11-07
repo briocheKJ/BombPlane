@@ -11,6 +11,7 @@ namespace BombPlane
     class Server
     {
         static string ip = "49.140.58.108";
+        //static string ip = "127.0.0.1"; //local debugging
         static int port = 1111;
         public static void Main(string[] args)
         {
