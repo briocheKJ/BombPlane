@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Code\\BombPlane\\BombPlane\\BombPlane\\BombPlane.csproj": {}
+    "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj": {}
   },
   "projects": {
-    "E:\\Code\\BombPlane\\BombPlane\\BombPlane\\BombPlane.csproj": {
+    "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Code\\BombPlane\\BombPlane\\BombPlane\\BombPlane.csproj",
+        "projectUniqueName": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj",
         "projectName": "BombPlane",
-        "projectPath": "E:\\Code\\BombPlane\\BombPlane\\BombPlane\\BombPlane.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "E:\\Code\\BombPlane\\BombPlane\\BombPlane\\obj\\",
+        "projectPath": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj",
+        "packagesPath": "C:\\Users\\Atoposyz\\.nuget\\packages\\",
+        "outputPath": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Atoposyz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

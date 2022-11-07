@@ -171,15 +171,15 @@
             this.TimeLabel2.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TimeLabel2.Location = new System.Drawing.Point(21, 72);
             this.TimeLabel2.Name = "TimeLabel2";
-            this.TimeLabel2.Size = new System.Drawing.Size(44, 32);
+            this.TimeLabel2.Size = new System.Drawing.Size(36, 32);
             this.TimeLabel2.TabIndex = 2;
-            this.TimeLabel2.Text = "15";
+            this.TimeLabel2.Text = "∞";
             this.TimeLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TimeLabel1
             // 
             this.TimeLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TimeLabel1.Font = new System.Drawing.Font("华文新魏", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TimeLabel1.Font = new System.Drawing.Font("华文中宋", 15.73109F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TimeLabel1.Location = new System.Drawing.Point(3, 23);
             this.TimeLabel1.Name = "TimeLabel1";
             this.TimeLabel1.Size = new System.Drawing.Size(126, 33);
@@ -200,20 +200,20 @@
             // TurnLabel2
             // 
             this.TurnLabel2.AutoSize = true;
-            this.TurnLabel2.Font = new System.Drawing.Font("Microsoft YaHei UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TurnLabel2.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TurnLabel2.Location = new System.Drawing.Point(43, 75);
             this.TurnLabel2.Name = "TurnLabel2";
-            this.TurnLabel2.Size = new System.Drawing.Size(89, 32);
+            this.TurnLabel2.Size = new System.Drawing.Size(88, 29);
             this.TurnLabel2.TabIndex = 1;
             this.TurnLabel2.Text = "行动中";
             // 
             // TurnLabel1
             // 
             this.TurnLabel1.AutoSize = true;
-            this.TurnLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TurnLabel1.Font = new System.Drawing.Font("华文中宋", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TurnLabel1.Location = new System.Drawing.Point(6, 15);
             this.TurnLabel1.Name = "TurnLabel1";
-            this.TurnLabel1.Size = new System.Drawing.Size(88, 45);
+            this.TurnLabel1.Size = new System.Drawing.Size(85, 39);
             this.TurnLabel1.TabIndex = 0;
             this.TurnLabel1.Text = "对方";
             // 
@@ -230,9 +230,10 @@
             // 
             // ConcedeButton
             // 
-            this.ConcedeButton.Location = new System.Drawing.Point(9, 208);
+            this.ConcedeButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ConcedeButton.Location = new System.Drawing.Point(6, 202);
             this.ConcedeButton.Name = "ConcedeButton";
-            this.ConcedeButton.Size = new System.Drawing.Size(112, 51);
+            this.ConcedeButton.Size = new System.Drawing.Size(113, 51);
             this.ConcedeButton.TabIndex = 2;
             this.ConcedeButton.Text = "认输";
             this.ConcedeButton.UseVisualStyleBackColor = true;
@@ -240,9 +241,10 @@
             // 
             // HelpButton
             // 
-            this.HelpButton.Location = new System.Drawing.Point(11, 119);
+            this.HelpButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpButton.Location = new System.Drawing.Point(6, 110);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(110, 52);
+            this.HelpButton.Size = new System.Drawing.Size(113, 52);
             this.HelpButton.TabIndex = 1;
             this.HelpButton.Text = "帮助";
             this.HelpButton.UseVisualStyleBackColor = true;
@@ -250,7 +252,8 @@
             // 
             // HelpMeButton
             // 
-            this.HelpMeButton.Location = new System.Drawing.Point(11, 30);
+            this.HelpMeButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpMeButton.Location = new System.Drawing.Point(6, 26);
             this.HelpMeButton.Name = "HelpMeButton";
             this.HelpMeButton.Size = new System.Drawing.Size(113, 51);
             this.HelpMeButton.TabIndex = 0;
@@ -271,7 +274,7 @@
             this.Location = new System.Drawing.Point(200, 200);
             this.Name = "RivalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "RivalView";
+            this.Text = "对战界面";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RivalView_FormClosed);
             this.Load += new System.EventHandler(this.RivalView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
