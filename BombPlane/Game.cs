@@ -57,8 +57,8 @@ namespace BombPlane
             planePos = new int[2][][];
 
             planePos[0] = player[0].SetPlane(0);
-            if (gameMode == 0) //planePos[1] = player[1].SetPlane(1);
-                planePos[1] = (int[][])planePos[0].Clone();
+            if (gameMode == 0) planePos[1] = player[1].SetPlane(1);
+                //planePos[1] = (int[][])planePos[0].Clone();
             else
             {
                 planePos[1] = new int[10][];
@@ -145,8 +145,11 @@ namespace BombPlane
             }
             //game loop
 
-            EndMsg endMsg = new EndMsg();
-            endMsg.Send(socket);
+            if (gameMode == 1)
+            {
+                EndMsg endMsg = new EndMsg();
+                endMsg.Send(socket);
+            }
 
             UIControl.Invoke(new MethodInvoker(delegate
             {
