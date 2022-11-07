@@ -139,9 +139,28 @@ namespace BombPlane
             return flag;
         }
         //放置飞机（涂颜色）
+        public void PlacePlane(int posx, int posy, int dir)
+        {
+            int l = posx, r = posy;
+            int[] npa;
+            int[] npb;
+            transform(out npa, out npb, dir);
+            SetPlane(l, r, dir);
+            for (int i = 0; i < 10; i++)
+            {
+                CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 9 ? 2 : 1);
+            }
+        }
+        public void PlacePlane(int pos, int dir)
+        {
+            int l = pos / 10, r = pos % 10;
+            PlacePlane(l, r, dir);
+        }
         public void PlacePlane(System.Windows.Forms.Label positon, int dir)
         {
             string name = positon.Name;
+            PlacePlane(int.Parse(name.Remove(0, 7)), dir);
+            /*
             int id = int.Parse(name.Remove(0, 7));
             int l = id / 10, r = id % 10;
             int[] npa;
@@ -151,7 +170,8 @@ namespace BombPlane
             for (int i = 0; i < 10; i++)
             {
                 CellsA[(l + npa[i]) * 10 + (r + npb[i])].ifPlane = (i == 9 ? 2 : 1);
-            }
+            }*/
+
         }
         //提交飞机位置
         public int[][] PlaneSubmit()
