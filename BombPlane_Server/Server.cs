@@ -10,7 +10,7 @@ namespace BombPlane
 {
     class Server
     {
-        static string ip = "127.0.0.1";
+        static string ip = "49.140.58.108";
         static int port = 1111;
         public static void Main(string[] args)
         {

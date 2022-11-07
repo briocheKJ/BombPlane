@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace BombPlane
 {
     abstract class Msg
     {
+
         public string msgType { get; }
 
         public Msg() { }
@@ -20,17 +22,21 @@ namespace BombPlane
         }
         public void Send(Socket socket)
         {
-            socket.Send(Encoding.UTF8.GetBytes(this.msgType));
             socket.Send(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this)));
         }
         static public Msg Receive(Socket socket)
         {
             byte[] bytes = new byte[1024];
             int len = socket.Receive(bytes);
-            string type = Encoding.UTF8.GetString(bytes, 0, len);
-            len = socket.Receive(bytes);
             string jsonString = Encoding.UTF8.GetString(bytes, 0, len);
 
+            Console.WriteLine(jsonString);
+            int pos = jsonString.IndexOf("\"msgType\":") + 11;
+            char x = jsonString[pos];
+            int cnt = 0;
+            while (jsonString[cnt + pos ] != '"') cnt++;
+            string type = jsonString.Substring(pos, cnt );
+            Console.WriteLine(type);
             Msg msg = null;
             switch (type)
             {

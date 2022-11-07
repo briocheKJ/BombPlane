@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "K9PWi8eZoW2FLLTsjO0h4XrxsEVXrRpfDEkeF33BA1Za8GEwCqg+wmDrmahcEyxHjfFkYxFld7a8aRjS/pPezg==",
+  "dgSpecHash": "9mYrCjF8rP/p8TAUSYJGK0dHR8CvYsp9avhgS1RxSLT8Fb9NW6CKwysSW3/hwVimpF6bvx30YM32FZgajIsk8Q==",
   "success": true,
-  "projectFilePath": "E:\\Code\\CSharp\\BombPlane\\BombPlane\\BombPlane_Server\\BombPlane_Server.csproj",
+  "projectFilePath": "C:\\Users\\brioche\\Desktop\\BombPlane\\BombPlane_Server\\BombPlane_Server.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
+    "C:\\Users\\brioche\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\brioche\\.nuget\\packages\\newtonsoft.json.schema\\3.0.14\\newtonsoft.json.schema.3.0.14.nupkg.sha512"
   ],
   "logs": []
 }

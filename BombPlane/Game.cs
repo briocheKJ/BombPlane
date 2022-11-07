@@ -170,7 +170,7 @@ namespace BombPlane
 
         void ConnectToServer()
         {
-            string ip = "127.0.0.1";
+            string ip = "49.140.58.108";
             int port = 1111;
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             EndPoint point = new IPEndPoint(IPAddress.Parse(ip), port);
