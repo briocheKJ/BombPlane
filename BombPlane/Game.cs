@@ -145,6 +145,9 @@ namespace BombPlane
             }
             //game loop
 
+            EndMsg endMsg = new EndMsg();
+            endMsg.Send(socket);
+
             UIControl.Invoke(new MethodInvoker(delegate
             {
                 GameEndForm gameOverForm = new GameEndForm(turn == 1);

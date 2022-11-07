@@ -68,17 +68,14 @@ namespace BombPlane
             while (true)
             {
                 Msg msg=Msg.Receive(socket2);
-                msg.print();
                 if(msg==null)
                 {
                     Console.WriteLine("null error");
                     break;
                 }
+                msg.print();
                 if (msg.msgType == "EndMsg")
-                {
-                    msg.print();
                     break;
-                }
                 msg.Send(socket1);
                 Console.WriteLine("transmit successfully!");
             }
