@@ -166,8 +166,8 @@ namespace BombPlane
 
         private void ConcedeButton_Click(object sender, EventArgs e)
         {
-            Form EndForm = new GameEndForm(false);
-            EndForm.ShowDialog();
+            //Form EndForm = new GameEndForm(false);
+            //EndForm.ShowDialog();
         }
     }
 }

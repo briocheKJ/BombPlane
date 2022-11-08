@@ -147,6 +147,10 @@ namespace BombPlane
         private void label2_Click_1(object sender, EventArgs e)
         {
             //fatherForm.Show();
+            while (CellManager.getInstance().getPlaneNum() > 0)
+                CellManager.getInstance().RevokeLastPlane();
+
+            autoReset.Set();
             this.Close();
         }
 

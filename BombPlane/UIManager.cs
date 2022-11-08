@@ -176,6 +176,8 @@ namespace BombPlane
         //提交飞机位置
         public int[][] PlaneSubmit()
         {
+            if (PlaneNum == 0) return null;
+
             for(int i = 0; i < 10; i++)
             {
                 for(int j = 0; j < 10; j++)

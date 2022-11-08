@@ -10,8 +10,8 @@ namespace BombPlane
 {
     class Server
     {
-        static string ip = "49.140.58.108";
-        //static string ip = "127.0.0.1"; //local debugging
+        //static string ip = "49.140.58.108";
+        static string ip = "127.0.0.1"; //local debugging
         static int port = 1111;
         public static void Main(string[] args)
         {
@@ -35,14 +35,11 @@ namespace BombPlane
 
                 StartMsg start1 = (StartMsg)Msg.Receive(socket1);
                 StartMsg start2 = (StartMsg)Msg.Receive(socket2);
-                if (!start1.ack || !start2.ack)
-                {
-                    start1.ack = false;
-                    start2.ack = false;
-                }
                 
                 start1.Send(socket2);
                 start2.Send(socket1);
+
+                if (!start1.ack || !start2.ack) continue;
 
                 Transmitor trans1 = new Transmitor(socket1, socket2);
                 Transmitor trans2 = new Transmitor(socket2, socket1);

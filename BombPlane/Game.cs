@@ -44,6 +44,10 @@ namespace BombPlane
 
         public void Run()
         {
+            bool playerReturned = false;
+            bool player0Conceded = false;
+            bool player1Conceded = false;
+
             Random rand = new Random();
             if (gameMode == 0) turn = rand.Next(2);
             else
@@ -64,6 +68,8 @@ namespace BombPlane
             planePos = new int[2][][];
 
             planePos[0] = player[0].SetPlane(0);
+            if (planePos[0] == null) playerReturned = true;
+
             if (gameMode == 0) planePos[1] = player[1].SetPlane(1);
             else
             {
@@ -71,25 +77,45 @@ namespace BombPlane
                 for (int i = 0; i < 10; i++)
                     planePos[1][i] = new int[10];
 
-                StartMsg start = new StartMsg(true);
+                StartMsg start = new StartMsg(!playerReturned);
                 start.Send(socket);
 
-                waitStr = "等待对方放置飞机...";
+                if (playerReturned) waitStr = "等待与服务器断开连接...";
+                else waitStr = "等待对方放置飞机...";
+                
                 UIControl.Invoke(new MethodInvoker(ShowWaitForm));
 
                 Msg msg = Msg.Receive(socket);
 
                 UIControl.Invoke(new MethodInvoker(CloseWaitForm));
 
+                if (((StartMsg)msg).ack == false)
+                {
+                    if (!playerReturned) waitStr = "对方已断开连接！";
+                    else waitStr = "已断开连接！";
+                    UIControl.Invoke(new MethodInvoker(ShowWaitForm));
+                    Thread.Sleep(2000);
+                    UIControl.Invoke(new MethodInvoker(CloseWaitForm));
+                    playerReturned = true;
+                }
                 //Opponent ready
             }
 
-            CellManager.getInstance().SetTurn(turn);
-            UIControl.Invoke(new MethodInvoker(ShowRivalForm));
-            sync.WaitOne();
+            if (!playerReturned)
+            {
+                CellManager.getInstance().SetTurn(turn);
+                UIControl.Invoke(new MethodInvoker(ShowRivalForm));
+                sync.WaitOne();
+            }
 
             while (true)
             {
+                if (playerReturned) //Player0 backed out
+                {
+                    turn = -1;
+                    break;
+                }
+
                 if (gameMode == 0 || turn == 0)
                 {
                     int[][] state = new int[10][];
@@ -164,33 +190,53 @@ namespace BombPlane
                 endMsg.Send(socket);
             }
 
-            UIControl.Invoke(new MethodInvoker(delegate
+            if (!playerReturned) //game ended successfully
             {
-                GameEndForm gameOverForm = new GameEndForm(turn == 1);
-                gameOverForm.Show();
+                if (player0Conceded) turn = 0;
+                if (player1Conceded) turn = 1;
 
-                AutoResetEvent clock = new AutoResetEvent(false);
-                Thread thread = new Thread(new ThreadStart(() =>
+                UIControl.Invoke(new MethodInvoker(delegate
                 {
-                    Thread.Sleep(2000);
-                    clock.Set();
+                    GameEndForm gameOverForm = new GameEndForm(turn == 1);
+                    gameOverForm.Show();
+
+                    Sleep(2000);
+
+                    gameOverForm.Close();
+                    //game over screen
+
+                    rivalForm.Close();
+                    UIControl.Show();
+                    //back to start screen
                 }));
-                thread.Start();
-                clock.WaitOne();
+            }
+            else //game ended unsuccessfully (Player0 backed out)
+            {
+                UIControl.Invoke(new MethodInvoker(delegate
+                {
+                    rivalForm.Close();
+                    UIControl.Show();
+                    //back to start screen
+                }));
+            }
+        }
 
-                gameOverForm.Close();
-                //game over screen
-
-                rivalForm.Close();
-                UIControl.Show();
-                //back to start screen
+        void Sleep(int ms)
+        {
+            AutoResetEvent clock = new AutoResetEvent(false);
+            Thread thread = new Thread(new ThreadStart(() =>
+            {
+                Thread.Sleep(ms);
+                clock.Set();
             }));
+            thread.Start();
+            clock.WaitOne();
         }
 
         void ConnectToServer()
         {
-            string ip = "49.140.58.108";
-            //string ip = "127.0.0.1"; //local debugging
+            //string ip = "49.140.58.108";
+            string ip = "127.0.0.1"; //local debugging
             int port = 1111;
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             EndPoint point = new IPEndPoint(IPAddress.Parse(ip), port);

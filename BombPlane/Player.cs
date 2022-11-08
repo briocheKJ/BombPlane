@@ -28,7 +28,7 @@ namespace BombPlane
         }
         public override int[][] SetPlane(int player)
         {
-            int[][] pos;
+            Object pos;
 
             UIControl.Invoke(new MethodInvoker(delegate { gameForm.Show(); }));
 
@@ -37,8 +37,10 @@ namespace BombPlane
 
             UIControl.Invoke(new MethodInvoker(delegate { gameForm.Close(); }));
 
-            pos = (int[][])CellManager.getInstance().PlaneSubmit().Clone();
-            return pos;
+            if (CellManager.getInstance().PlaneSubmit() == null) return null;
+
+            pos = CellManager.getInstance().PlaneSubmit().Clone();
+            return (int[][])pos;
         }
 
         public override int TakeAction(int[][] state)
