@@ -23,15 +23,16 @@ namespace BombPlane
             while(true)
             {
                 Socket socket1 = server.Accept();
-                Console.WriteLine("a client connect.....");
+                Console.WriteLine("a client connected.....");
 
                 Socket socket2 = server.Accept();
-                Console.WriteLine("a client connect.....");
+                Console.WriteLine("a client connected.....");
 
                 Random random = new Random();
-                bool turn = (random.Next(2) == 1);
-                (new ReadyMsg(turn)).Send(socket1);
-                (new ReadyMsg(!turn)).Send(socket2);
+                int turn = random.Next(2);
+                Console.WriteLine("decide turn: player {0} first", turn);
+                (new ReadyMsg(turn == 1)).Send(socket1);
+                (new ReadyMsg(turn == 0)).Send(socket2);
 
                 StartMsg start1 = (StartMsg)Msg.Receive(socket1);
                 StartMsg start2 = (StartMsg)Msg.Receive(socket2);
@@ -72,12 +73,31 @@ namespace BombPlane
                     break;
                 }
                 msg.print();
+                if (msg.msgType == "OperationMsg")
+                {
+                    int type = ((OperationMsg)msg).opx;
+                    if (type == -1)
+                    {
+                        Console.WriteLine("one player conceded and disconnected");
+                        msg.Send(socket1);
+                        break;
+                    }
+                    if (type == -2)
+                    {
+                        Console.WriteLine("another player disconnected");
+                        break;
+                    }
+                }
                 if (msg.msgType == "EndMsg")
+                {
+                    Console.WriteLine("game ended. player disconnected.");
                     break;
+                }
                 msg.Send(socket1);
                 Console.WriteLine("transmit successfully!");
             }
-            socket1.Close();
+            Console.WriteLine("server thread closed");
+            socket2.Close(); //only close receiving socket
         }
     }
     

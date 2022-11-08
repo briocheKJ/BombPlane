@@ -134,6 +134,7 @@ namespace BombPlane
                     sync.WaitOne();
                     
                     act = player[turn].TakeAction(state);
+                    if (act == -1) player0Conceded = true;
                 }
                 else
                 {
@@ -146,8 +147,14 @@ namespace BombPlane
                 {
                     if (turn == 0)
                     {
-                        OperationMsg sending = new OperationMsg(act / 10, act % 10);
+                        OperationMsg sending;
+
+                        if (!player0Conceded) sending = new OperationMsg(act / 10, act % 10);
+                        else sending = new OperationMsg(-1, -1); //Notice opponent that you conceded
+                        
                         sending.Send(socket);
+
+                        if (player0Conceded) break;
 
                         Msg recving = Msg.Receive(socket);
                         res = ((FeedbackMsg)recving).feedback;
@@ -158,6 +165,15 @@ namespace BombPlane
                         Msg recving = Msg.Receive(socket);
                         int opx = ((OperationMsg)recving).opx;
                         int opy = ((OperationMsg)recving).opy;
+
+                        if (opx < 0)
+                        {
+                            player1Conceded = true;
+                            OperationMsg back = new OperationMsg(-2, -2);
+                            back.Send(socket); //Shut down associated server thread
+                            break;
+                        }
+                        
                         act = opx * 10 + opy;
                         res = planePos[0][opx][opy];
 
@@ -185,13 +201,13 @@ namespace BombPlane
             }
             //game loop
 
-            if (gameMode == 1)
+            if (gameMode == 1 && !player0Conceded && !player1Conceded)
             {
                 EndMsg endMsg = new EndMsg();
                 endMsg.Send(socket);
             }
 
-            if (!playerReturned) //game ended successfully
+            if (!playerReturned) //game ended
             {
                 if (player0Conceded) turn = 0;
                 if (player1Conceded) turn = 1;
@@ -211,7 +227,7 @@ namespace BombPlane
                     //back to start screen
                 }));
             }
-            else //game ended unsuccessfully (Player0 backed out)
+            else //game never started
             {
                 UIControl.Invoke(new MethodInvoker(delegate
                 {

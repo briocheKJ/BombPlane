@@ -30,13 +30,13 @@ namespace BombPlane
             int len = socket.Receive(bytes);
             string jsonString = Encoding.UTF8.GetString(bytes, 0, len);
 
-            Console.WriteLine(jsonString);
+            //Console.WriteLine(jsonString);
             int pos = jsonString.IndexOf("\"msgType\":") + 11;
             char x = jsonString[pos];
             int cnt = 0;
             while (jsonString[cnt + pos] != '"') cnt++;
             string type = jsonString.Substring(pos, cnt);
-            Console.WriteLine(type);
+            //Console.WriteLine(type);
             Msg msg = null;
             switch (type)
             {

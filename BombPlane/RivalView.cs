@@ -136,9 +136,6 @@ namespace BombPlane
                 Squares[1][id].BackColor == Color.LightGray) 
             {
                 CellManager.getInstance().BombPlane(id);
-                //int clr = 1;//得到当前格子是否是飞机格!!
-                //DrawColor(id, clr);
-                //CellManager.getInstance().SwitchTurn();
 
                 actionEvent.Set();
             }
@@ -156,8 +153,9 @@ namespace BombPlane
         //认输按钮
         private void ConcedeButton_Click(object sender, EventArgs e)
         {
-            //Form EndForm = new GameEndForm(false);
-            //EndForm.ShowDialog();
+            this.Hide();
+            CellManager.getInstance().BombPlane(-1);
+            actionEvent.Set();
         }
     }
 }
