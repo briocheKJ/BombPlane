@@ -16,6 +16,7 @@ namespace BombPlane
 
         private Label[][] Squares = new Label[2][];
         private int RestTime = 15;
+        private bool ActionEnabled = false;
         public RivalView()
         {
            // fatherform = father;
@@ -88,16 +89,18 @@ namespace BombPlane
             if (ChangeColor) DrawColor((turn + 1) % 2, num, clr);
         }
         //禁用按钮
-        public void BanButtons()
+        public void DisableButtons()
         {
             PromptButton.Enabled = false;
             ConcedeButton.Enabled = false;
+            ActionEnabled = false;
         }
         //启用按钮
         public void EnableButtons()
         {
             PromptButton.Enabled = true;
             ConcedeButton.Enabled = true;
+            ActionEnabled = true;
         }
 
         private void RivalView_Load(object sender, EventArgs e)
@@ -129,7 +132,7 @@ namespace BombPlane
         private void MyTable_MouseDown(object sender, MouseEventArgs e)
         {
             int id = int.Parse(((Label)sender).Name.Remove(0, 7));
-            if (e.Button == MouseButtons.Left && CellManager.getInstance().Turn() == 1 &&
+            if (e.Button == MouseButtons.Left && ActionEnabled &&
                 Squares[1][id].BackColor == Color.LightGray) 
             {
                 CellManager.getInstance().BombPlane(id);

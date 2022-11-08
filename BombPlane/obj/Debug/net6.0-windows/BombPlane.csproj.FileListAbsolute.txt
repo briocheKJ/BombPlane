@@ -24,7 +24,6 @@ E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.csproj.
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.GameEndForm.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.GameForm.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.HelpForm.resources
-E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.PlayView.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.Properties.Resources.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.RivalView.resources
 E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.StartForm.resources

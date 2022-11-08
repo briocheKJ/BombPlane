@@ -48,10 +48,15 @@ namespace BombPlane
             int act = 0;
 
             rivalForm.SetActionEvent(actionEvent);
+
+            UIControl.Invoke(new MethodInvoker(delegate { rivalForm.EnableButtons(); }));
             //Display
 
             actionEvent.WaitOne();
             //notice UI, wait for return
+
+            UIControl.Invoke(new MethodInvoker(delegate { rivalForm.DisableButtons(); }));
+
             act = CellManager.getInstance().LastBomb();
             return act;
         }

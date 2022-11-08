@@ -26,6 +26,7 @@ namespace BombPlane
         {
             UIControl = UI;
             rivalForm = rival;
+            rivalForm.DisableButtons();
 
             gameMode = mode;
 
