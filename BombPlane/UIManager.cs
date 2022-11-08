@@ -174,7 +174,7 @@ namespace BombPlane
 
         }
         //提交飞机位置
-        public int[][] PlaneSubmit()
+        public int[][]? PlaneSubmit()
         {
             if (PlaneNum == 0) return null;
 

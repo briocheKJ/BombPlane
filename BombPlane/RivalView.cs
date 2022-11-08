@@ -87,6 +87,18 @@ namespace BombPlane
             else TurnLabel1.Text = "对方";
             if (ChangeColor) DrawColor((turn + 1) % 2, num, clr);
         }
+        //禁用按钮
+        public void BanButtons()
+        {
+            PromptButton.Enabled = false;
+            ConcedeButton.Enabled = false;
+        }
+        //启用按钮
+        public void EnableButtons()
+        {
+            PromptButton.Enabled = true;
+            ConcedeButton.Enabled = true;
+        }
 
         private void RivalView_Load(object sender, EventArgs e)
         {
@@ -133,37 +145,12 @@ namespace BombPlane
         {
             actionEvent = action;
         }
-        //计时器控件
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if(RestTime > 0)
-            {
-                TimeLabel2.Text = RestTime.ToString();
-                RestTime--;
-            }
-            else
-            {
-                timer1.Stop();
-                actionEvent.Set();
-            }
-        }
-        //新的回合开始需要开始计时器
-        private void StartTimer()
-        {
-            RestTime = 15;
-            timer1.Start();
-        }
-
-        private void HelpMeButton_Click(object sender, EventArgs e)
+        //提示按钮
+        private void PromptButton_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void HelpButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //认输按钮
         private void ConcedeButton_Click(object sender, EventArgs e)
         {
             //Form EndForm = new GameEndForm(false);

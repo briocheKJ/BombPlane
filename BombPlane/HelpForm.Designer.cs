@@ -81,6 +81,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HelpForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HelpPage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HelpForm_FormClosed);
             this.Load += new System.EventHandler(this.HelpPage_Load);
