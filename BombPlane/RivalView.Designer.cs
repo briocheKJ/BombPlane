@@ -229,6 +229,7 @@
             this.Name = "RivalView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "对战界面";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RivalView_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RivalView_FormClosed);
             this.Load += new System.EventHandler(this.RivalView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
