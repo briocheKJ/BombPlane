@@ -19,7 +19,7 @@ namespace BombPlane
         {
             this.Hide();
 
-            RivalView r = new RivalView();
+            RivalView r = new RivalView(this);
             Player p0 = new RealPlayer(this, r);
             Game game = new Game(this, r, 1, p0);
 
@@ -49,7 +49,7 @@ namespace BombPlane
         {
             this.Hide();
 
-            RivalView r = new RivalView();
+            RivalView r = new RivalView(this);
             Player p0 = new RealPlayer(this, r);
             Player p1 = new AIPlayer_Random();
             Game game = new Game(this, r, 0, p0, p1);
@@ -62,7 +62,7 @@ namespace BombPlane
         {
             this.Hide();
 
-            RivalView r = new RivalView();
+            RivalView r = new RivalView(this);
             Player p0 = new AIPlayer_Random();
             Player p1 = new AIPlayer_Random();
             Game game = new Game(this, r, 0, p0, p1);
