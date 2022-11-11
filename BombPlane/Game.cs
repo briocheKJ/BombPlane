@@ -151,7 +151,7 @@ namespace BombPlane
 
                         if (!player0Conceded) sending = new OperationMsg(act / 10, act % 10);
                         else sending = new OperationMsg(-1, -1); //Notice opponent that you conceded
-                        
+
                         sending.Send(socket);
 
                         if (player0Conceded) break;
@@ -173,7 +173,7 @@ namespace BombPlane
                             back.Send(socket); //Shut down associated server thread
                             break;
                         }
-                        
+
                         act = opx * 10 + opy;
                         res = planePos[0][opx][opy];
 
@@ -182,7 +182,11 @@ namespace BombPlane
                         //receive action and send result
                     }
                 }
-                else res = planePos[(turn + 1) % 2][act / 10][act % 10];
+                else
+                {
+                    if (player0Conceded) break;
+                    res = planePos[(turn + 1) % 2][act / 10][act % 10];
+                }
 
                 revealed[(turn + 1) % 2][act / 10][act % 10] = true;
                 planePos[(turn + 1) % 2][act / 10][act % 10] = res;

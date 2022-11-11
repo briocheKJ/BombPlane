@@ -153,7 +153,7 @@ namespace BombPlane
         //认输按钮
         private void ConcedeButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             CellManager.getInstance().BombPlane(-1);
             actionEvent.Set();
         }
