@@ -51,7 +51,7 @@ namespace BombPlane
 
             RivalView r = new RivalView(this);
             Player p0 = new RealPlayer(this, r);
-            Player p1 = new AIPlayer_Random();
+            Player p1 = new AIPlayer_Entropy();
             Game game = new Game(this, r, 0, p0, p1);
 
             Thread thread = new Thread(new ThreadStart(game.Run));
