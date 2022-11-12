@@ -8,6 +8,8 @@ namespace BombPlane
         public StartForm()
         {
             InitializeComponent();
+
+            Store.Generate();
         }
 
         private void Form1_Load(object sender, EventArgs e)
