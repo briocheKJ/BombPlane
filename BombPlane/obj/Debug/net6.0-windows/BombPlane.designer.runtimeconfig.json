@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Lenovo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Atoposyz\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Atoposyz\\.nuget\\packages"
     ],
     "configProperties": {
