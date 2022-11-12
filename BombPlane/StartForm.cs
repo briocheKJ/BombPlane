@@ -25,7 +25,7 @@ namespace BombPlane
             Player p0 = new RealPlayer(this, r);
             Game game = new Game(this, r, 1, p0);
 
-            Thread thread = new Thread(new ThreadStart(game.Run));
+            Thread thread = new Thread(new ThreadStart(game.Play));
             thread.Start();
         }
         //本地对战按钮
@@ -56,7 +56,7 @@ namespace BombPlane
             Player p1 = new AIPlayer_Entropy();
             Game game = new Game(this, r, 0, p0, p1);
 
-            Thread thread = new Thread(new ThreadStart(game.Run));
+            Thread thread = new Thread(new ThreadStart(game.Play));
             thread.Start();
         }
         //看海模式按钮
@@ -69,7 +69,7 @@ namespace BombPlane
             Player p1 = new AIPlayer_Entropy();
             Game game = new Game(this, r, 0, p0, p1);
 
-            Thread thread = new Thread(new ThreadStart(game.Run));
+            Thread thread = new Thread(new ThreadStart(game.Play));
             thread.Start();
         }
         //本地模式返回上级菜单
@@ -78,10 +78,14 @@ namespace BombPlane
             LocalPanel.Visible = false;
             TopPanel.Visible = true;
         }
-        //aI效果测试
+        //AI效果测试
         private void button7_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            AITestForm testForm = new AITestForm(this);
+            testForm.Show();
+            testForm.BeginTest();
         }
     }
 }

@@ -129,3 +129,4 @@ C:\Users\brioche\Desktop\新建文件夹\BombPlane\BombPlane\obj\Debug\net6.0-wi
 C:\Users\brioche\Desktop\新建文件夹\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.pdb
 C:\Users\brioche\Desktop\新建文件夹\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.genruntimeconfig.cache
 C:\Users\brioche\Desktop\新建文件夹\BombPlane\BombPlane\obj\Debug\net6.0-windows\ref\BombPlane.dll
+E:\Code\BombPlane\BombPlane\BombPlane\obj\Debug\net6.0-windows\BombPlane.AITestForm.resources

@@ -43,8 +43,27 @@ namespace BombPlane
             }
         }
 
-        public void Run()
+        public void Play()
         {
+            Run(true);
+        }
+
+        private AITestForm test;
+
+        public void Test()
+        {
+            Run(false);
+        }
+
+        public void SetTest(AITestForm test)
+        {
+            this.test = test;
+        }
+
+        public void Run(bool play)
+        {
+            int step = 0;
+
             bool playerReturned = false;
             bool player0Conceded = false;
             bool player1Conceded = false;
@@ -111,6 +130,8 @@ namespace BombPlane
 
             while (true)
             {
+                step++;
+
                 if (playerReturned) //Player0 backed out
                 {
                     turn = -1;
@@ -133,7 +154,7 @@ namespace BombPlane
                     UIControl.Invoke(new MethodInvoker(UpdateLabel));
                     sync.WaitOne();
                     
-                    act = player[turn].TakeAction(state);
+                    act = player[turn].TakeAction(state, play);
                     if (act == -1) player0Conceded = true;
                 }
                 else
@@ -221,15 +242,16 @@ namespace BombPlane
                     GameEndForm gameOverForm = new GameEndForm(turn == 1);
                     gameOverForm.Show();
 
-                    Sleep(2000);
+                    if (play) Sleep(2000);
 
                     gameOverForm.Close();
                     //game over screen
 
                     rivalForm.Close();
-                    UIControl.Show();
-                    //back to start screen
+                    if (play) UIControl.Show(); //back to start screen
                 }));
+
+                if (!play) test.Update(turn, step);
             }
             else //game never started
             {

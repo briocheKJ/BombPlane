@@ -83,7 +83,7 @@ namespace BombPlane
                 else return x;
             }
         }
-        public override int TakeAction(int[][] state)
+        public override int TakeAction(int[][] state, bool play)
         {
             Random rand = new Random();
             int act = -3,cnt=0,res=0;
@@ -132,7 +132,8 @@ namespace BombPlane
                     act = i;
                 }
             }
-            Thread.Sleep(1000);
+
+            if (play) Thread.Sleep(1000);
 
             return act;
         }

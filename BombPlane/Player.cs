@@ -9,7 +9,7 @@ namespace BombPlane
     abstract class Player
     {
         abstract public int[][] SetPlane(int player);
-        abstract public int TakeAction(int[][] state);
+        abstract public int TakeAction(int[][] state, bool play);
     }
 
     class RealPlayer : Player
@@ -43,7 +43,7 @@ namespace BombPlane
             return (int[][])pos;
         }
 
-        public override int TakeAction(int[][] state)
+        public override int TakeAction(int[][] state, bool play)
         {
             int act = 0;
 
@@ -135,7 +135,7 @@ namespace BombPlane
                 else return x;
             }
         }
-        public override int TakeAction(int[][] state)
+        public override int TakeAction(int[][] state, bool play)
         {
             Random rand = new Random();
             int act;
@@ -146,7 +146,7 @@ namespace BombPlane
                 if (state[act / 10][act % 10] == -1) break;
             }
 
-            Thread.Sleep(1000);
+            if (play) Thread.Sleep(1000);
 
             return act;
         }
