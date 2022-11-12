@@ -78,5 +78,10 @@ namespace BombPlane
             LocalPanel.Visible = false;
             TopPanel.Visible = true;
         }
+        //aI效果测试
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
