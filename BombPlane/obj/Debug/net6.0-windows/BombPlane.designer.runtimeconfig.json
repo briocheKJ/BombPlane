@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Atoposyz\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Atoposyz\\.nuget\\packages"
+      "C:\\Users\\brioche\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\brioche\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

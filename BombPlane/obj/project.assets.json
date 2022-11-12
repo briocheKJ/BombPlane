@@ -5,14 +5,10 @@
       "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Newtonsoft.Json.Schema/3.0.14": {
@@ -21,14 +17,10 @@
           "Newtonsoft.Json": "12.0.3"
         },
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
         }
       }
     }
@@ -95,23 +87,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Atoposyz\\.nuget\\packages\\": {}
+    "C:\\Users\\brioche\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj",
+      "projectUniqueName": "C:\\Users\\brioche\\Desktop\\BombPlane\\BombPlane\\BombPlane.csproj",
       "projectName": "BombPlane",
-      "projectPath": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\BombPlane.csproj",
-      "packagesPath": "C:\\Users\\Atoposyz\\.nuget\\packages\\",
-      "outputPath": "D:\\JLU吉林大学\\5大三上\\C#程序设计\\BombPlane\\BombPlane\\obj\\",
+      "projectPath": "C:\\Users\\brioche\\Desktop\\BombPlane\\BombPlane\\BombPlane.csproj",
+      "packagesPath": "C:\\Users\\brioche\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\brioche\\Desktop\\BombPlane\\BombPlane\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Atoposyz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\brioche\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0-windows"
+        "net6.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -144,8 +136,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -157,7 +148,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
