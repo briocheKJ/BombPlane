@@ -17,10 +17,10 @@ namespace BombPlane
         private Label[][] Squares = new Label[2][];
         private int RestTime = 15;
         private bool ActionEnabled = false;
-        Form fatherform;
+        //Form fatherform;
         public RivalView(Form father)
         {
-            fatherform = father;
+            //fatherform = father;
             InitializeComponent();
             Squares[0] = new Label[100];
             Squares[1] = new Label[100];
@@ -52,7 +52,7 @@ namespace BombPlane
             }
             
         }
-        //GameForm fatherform;
+        
         //更新视图
         public void initView(int turn, int[][] state)
         {
@@ -111,7 +111,7 @@ namespace BombPlane
 
         private void RivalView_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fatherform.Close();
+            //fatherform.Close();
         }
         //画颜色
         private void DrawColor(int turn, int id, int clr)
@@ -161,7 +161,7 @@ namespace BombPlane
 
         private void RivalView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            fatherform.Close();
+            //fatherform.Close();
         }
     }
 }
