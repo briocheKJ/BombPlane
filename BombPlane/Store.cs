@@ -9,7 +9,9 @@ namespace BombPlane
     static class Store
     {
         public static int[][][] store = new int[70000][][];
+        public static int[][] store_code = new int[70000][]; 
         static int[][] pos;
+        static int[] code = new int[3];
         public static int tot = 0;
 
         private static void dfs(int k, int cnt)
@@ -28,6 +30,7 @@ namespace BombPlane
                 for (int i = 0; i < 10; i++)
                     for (int j = 0; j < 10; j++)
                         store[tot][i][j] = pos[i][j];
+                store_code[tot] = (int[])code.Clone();
                 ++tot;
                 return;
             }
@@ -44,8 +47,14 @@ namespace BombPlane
                 if (cnt == 400) return;
                 flag = true;
                 int t = cnt;
+                code[3 - k] = cnt;
+                /*
                 r = t % 4; t = t / 4;
                 x = t % 10; t /= 10;
+                y = t % 10;
+                */
+                r = t / 100;
+                x = (t % 100) / 10;
                 y = t % 10;
                 cnt++;
                 for (int j = 0; j < 10; j++)
