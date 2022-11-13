@@ -33,6 +33,7 @@ namespace BombPlane
                 Squares[0][i].Dock = DockStyle.Fill;
                 Squares[0][i].TabIndex = 1;
                 Squares[0][i].Text = i.ToString();
+                Squares[0][i].TextAlign = ContentAlignment.MiddleCenter;
                 Squares[0][i].Margin = new Padding(1);
                 Squares[1][i] = new Label();
                 Squares[1][i].BackColor = Color.LightGray;
@@ -40,6 +41,7 @@ namespace BombPlane
                 Squares[1][i].Dock = DockStyle.Fill;
                 Squares[1][i].TabIndex = 1;
                 Squares[1][i].Text = i.ToString();
+                Squares[1][i].TextAlign = ContentAlignment.MiddleCenter;
                 Squares[1][i].Margin = new Padding(1);
                 Squares[1][i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
             }
@@ -181,30 +183,20 @@ namespace BombPlane
         {
             //fatherform.Close();
         }
-
-        List<int> CellList = new List<int>();
-        private void MyTable_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        public void ShowPrompt(List<int> CellList)
         {
+            if (CellList == null) return;
             foreach (int CellNum in CellList)
             {
-                int col = CellNum % 10;
-                int row = CellNum / 10;
-                if(e.Column == col && e.Row == row)
-                {
-                    e.Graphics.DrawRectangle(new Pen(Color.Red), e.CellBounds);
-                }
+                Squares[1][CellNum].Image = Properties.Resources.smalllabel;
             }
         }
-
-        public void UpdateCellList(List<int> cells)
+        public void ClearPrompt()
         {
-            CellList = cells;
-            MyTable.Refresh();
-        }
-
-        public void ClearCellList()
-        {
-            CellList = new List<int>();
+            foreach(var sq in Squares[1])
+            {
+                sq.Image = null;
+            }
         }
     }
 }

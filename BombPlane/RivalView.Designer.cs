@@ -49,6 +49,7 @@
             // 
             // RivalTable
             // 
+            this.RivalTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.RivalTable.ColumnCount = 10;
             this.RivalTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.RivalTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -64,7 +65,6 @@
             this.RivalTable.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.RivalTable.Location = new System.Drawing.Point(762, 3);
             this.RivalTable.Name = "RivalTable";
-            this.RivalTable.Padding = new System.Windows.Forms.Padding(1);
             this.RivalTable.RowCount = 10;
             this.RivalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.RivalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -98,6 +98,7 @@
             // 
             // MyTable
             // 
+            this.MyTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.MyTable.ColumnCount = 10;
             this.MyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -113,7 +114,6 @@
             this.MyTable.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.MyTable.Location = new System.Drawing.Point(3, 3);
             this.MyTable.Name = "MyTable";
-            this.MyTable.Padding = new System.Windows.Forms.Padding(1);
             this.MyTable.RowCount = 10;
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -127,7 +127,6 @@
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.Size = new System.Drawing.Size(615, 578);
             this.MyTable.TabIndex = 1;
-            this.MyTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.MyTable_CellPaint);
             // 
             // flowLayoutPanel1
             // 

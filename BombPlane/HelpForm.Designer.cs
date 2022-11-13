@@ -32,6 +32,7 @@
             this.HelpPageTitle = new System.Windows.Forms.Label();
             this.ReturnButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // HelpPageTitle
@@ -68,6 +69,14 @@
             this.label1.Text = "       每个人在各自10×10的格子中放3个飞机，之后轮流在对方格子中选点爆破，先炸到对方3个机头的一方获胜。\r\n\r\n       实在看不懂玩两把就会了。" +
     "";
             // 
+            // label2
+            // 
+            this.label2.Image = global::BombPlane.Properties.Resources.smalllabel;
+            this.label2.Location = new System.Drawing.Point(716, 330);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 50);
+            this.label2.TabIndex = 3;
+            // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -75,6 +84,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(896, 590);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ReturnButton);
             this.Controls.Add(this.HelpPageTitle);
@@ -95,5 +105,6 @@
         private System.Windows.Forms.Label HelpPageTitle;
         private System.Windows.Forms.Button ReturnButton;
         private Label label1;
+        private Label label2;
     }
 }
