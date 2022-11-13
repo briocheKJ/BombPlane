@@ -140,8 +140,8 @@ namespace BombPlane
                 Squares[1][id].BackColor == Color.LightGray) 
             {
                 CellManager.getInstance().BombPlane(id);
-
                 actionEvent.Set();
+                ClearPrompt();
             }
 
             if (e.Button == MouseButtons.Left && ActionEnabled &&
@@ -149,7 +149,7 @@ namespace BombPlane
                 Prompt)
             {
                 Prompt = false;
-                UpdateCellList(HintSystem.CalcHint(id, state));
+                ShowPrompt(HintSystem.CalcHint(id, state));
             }
         }
 

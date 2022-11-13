@@ -8,11 +8,13 @@ namespace BombPlane
 {
     static class HintSystem
     {
+        private static bool[] vis = new bool[100];
+
         //计算当前状态下，一块机身所属飞机机头的所有可能位置
         public static List<int> CalcHint(int act, int[][] state)
         {
             List<int> result = new List<int>();
-            bool[] vis = new bool[100];
+            vis = new bool[100];
             for(int i=0; i<Store.tot; i++)
             {
                 bool flag = true; //match
@@ -30,8 +32,7 @@ namespace BombPlane
                 if (!flag) continue;
 
                 for (int j = 0; j < 3; j++)
-                    if (InPlane(Store.store_code[i][j], act))
-                        vis[Store.store_code[i][j] % 100] = true;
+                    CheckInPlane(Store.store_code[i][j], act);
             }
 
             for(int i=0; i<100; i++)
@@ -40,7 +41,7 @@ namespace BombPlane
             return result;
         }
 
-        private static bool InPlane(int plane_code, int act)
+        private static void CheckInPlane(int plane_code, int act)
         {
             int r = plane_code / 100;
             int x = (plane_code % 100) / 10;
@@ -48,13 +49,21 @@ namespace BombPlane
             int[] npx = new int[10] { -1, 0, 0, 0, 0, 0, 1, 2, 2, 2 };
             int[] npy = new int[10] { 0, -2, -1, 0, 1, 2, 0, -1, 0, 1 };
 
-            for(int i=0; i<10; i++)
+            bool flag = false;
+            for(int i=1; i<10; i++) //排除机头
             {
                 int nx = x + rotate(npx[i], npy[i], r, true);
                 int ny = y + rotate(npx[i], npy[i], r, false);
-                if (act / 10 == nx && act % 10 == ny) return true;
+                if (act / 10 == nx && act % 10 == ny) flag = true;
             }
-            return false;
+
+            if (flag)
+            {
+                int nx = x + rotate(npx[0], npy[0], r, true);
+                int ny = y + rotate(npx[0], npy[0], r, false);
+                vis[nx * 10 + ny] = true;
+                //机头位置加入list
+            }
         }
 
         private static int rotate(int x, int y, int r, bool side)
