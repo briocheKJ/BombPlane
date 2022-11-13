@@ -32,14 +32,14 @@ namespace BombPlane
                 Squares[0][i].Dock = DockStyle.Fill;
                 Squares[0][i].TabIndex = 1;
                 Squares[0][i].Text = i.ToString();
-                Squares[0][i].Margin = new Padding(0);
+                Squares[0][i].Margin = new Padding(1);
                 Squares[1][i] = new Label();
                 Squares[1][i].BackColor = Color.LightGray;
                 Squares[1][i].Name = "Squares" + i;
                 Squares[1][i].Dock = DockStyle.Fill;
                 Squares[1][i].TabIndex = 1;
                 Squares[1][i].Text = i.ToString();
-                Squares[1][i].Margin = new Padding(0);
+                Squares[1][i].Margin = new Padding(1);
                 Squares[1][i].MouseDown += new MouseEventHandler(this.MyTable_MouseDown);
             }
             for (int i = 0; i < 10; i++)
@@ -68,11 +68,11 @@ namespace BombPlane
                 }
                 else if (PlaneType == 1)
                 {
-                    Squares[0][i].BackColor = Color.Violet;
+                    Squares[0][i].BackColor = Color.LightGreen;
                 }
                 else if (PlaneType == 2)
                 {
-                    Squares[0][i].BackColor = Color.DeepSkyBlue;
+                    Squares[0][i].BackColor = Color.MediumAquamarine;
                 }
             }
         }
@@ -125,7 +125,7 @@ namespace BombPlane
                     Squares[turn][id].BackColor = Color.Yellow;
                     break;
                 case 2:
-                    Squares[turn][id].BackColor = Color.Red;
+                    Squares[turn][id].BackColor = Color.Orange;
                     break;
             }
         }
@@ -162,6 +162,20 @@ namespace BombPlane
         private void RivalView_FormClosing(object sender, FormClosingEventArgs e)
         {
             //fatherform.Close();
+        }
+
+        private void MyTable_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
+        {
+            List<int> CellList = new List<int> { 0, 90, 1, 2, 3, 4, 5, 6, 9, 99};
+            foreach (int CellNum in CellList)
+            {
+                int col = CellNum % 10;
+                int row = CellNum / 10;
+                if(e.Column == col && e.Row == row)
+                {
+                    e.Graphics.DrawRectangle(new Pen(Color.Red), e.CellBounds);
+                }
+            }
         }
     }
 }

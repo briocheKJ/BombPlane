@@ -34,7 +34,7 @@ namespace BombPlane
                 Squares[i].Dock = DockStyle.Fill;
                 Squares[i].TabIndex = 1;
                 Squares[i].Text = i.ToString();
-                Squares[i].Margin = new Padding(0);
+                Squares[i].Margin = new Padding(1);
                 Squares[i].MouseMove += new MouseEventHandler(this.CellMouseSelect);
                 Squares[i].MouseLeave += new EventHandler(this.CellMouseNotSelect);
                 Squares[i].MouseDown += new MouseEventHandler(this.CellMouseDown);
@@ -83,7 +83,7 @@ namespace BombPlane
                         }
                         else
                         {
-                            Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = Color.Violet;
+                            Squares[(l + npa[i]) * 10 + (r + npb[i])].BackColor = Color.Orange;
                         }
                     }
                         
@@ -134,7 +134,7 @@ namespace BombPlane
             {
                 if(CellManager.getInstance().Planeable((Label)sender, direct) && CellManager.getInstance().getPlaneNum() < 3)
                 {
-                    DrawColor((Label)sender, direct, Color.Violet);
+                    DrawColor((Label)sender, direct, Color.Orange);
                     CellManager.getInstance().PlacePlane((Label)sender, direct);
                 }
                 else
@@ -172,10 +172,6 @@ namespace BombPlane
             
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         //完成按钮
         private void FinishButton_Click(object sender, EventArgs e)
         {

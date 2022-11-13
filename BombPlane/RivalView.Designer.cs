@@ -49,7 +49,6 @@
             // 
             // RivalTable
             // 
-            this.RivalTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.RivalTable.ColumnCount = 10;
             this.RivalTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.RivalTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -65,6 +64,7 @@
             this.RivalTable.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.RivalTable.Location = new System.Drawing.Point(762, 3);
             this.RivalTable.Name = "RivalTable";
+            this.RivalTable.Padding = new System.Windows.Forms.Padding(1);
             this.RivalTable.RowCount = 10;
             this.RivalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.RivalTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -98,7 +98,6 @@
             // 
             // MyTable
             // 
-            this.MyTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.MyTable.ColumnCount = 10;
             this.MyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -114,6 +113,7 @@
             this.MyTable.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.MyTable.Location = new System.Drawing.Point(3, 3);
             this.MyTable.Name = "MyTable";
+            this.MyTable.Padding = new System.Windows.Forms.Padding(1);
             this.MyTable.RowCount = 10;
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -127,6 +127,7 @@
             this.MyTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.MyTable.Size = new System.Drawing.Size(615, 578);
             this.MyTable.TabIndex = 1;
+            this.MyTable.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.MyTable_CellPaint);
             // 
             // flowLayoutPanel1
             // 
@@ -144,7 +145,7 @@
             this.groupBox2.Controls.Add(this.TurnLabel1);
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(134, 110);
+            this.groupBox2.Size = new System.Drawing.Size(134, 96);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
@@ -152,7 +153,7 @@
             // 
             this.TurnLabel2.AutoSize = true;
             this.TurnLabel2.Font = new System.Drawing.Font("华文中宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TurnLabel2.Location = new System.Drawing.Point(43, 75);
+            this.TurnLabel2.Location = new System.Drawing.Point(41, 56);
             this.TurnLabel2.Name = "TurnLabel2";
             this.TurnLabel2.Size = new System.Drawing.Size(88, 29);
             this.TurnLabel2.TabIndex = 1;
@@ -162,7 +163,7 @@
             // 
             this.TurnLabel1.AutoSize = true;
             this.TurnLabel1.Font = new System.Drawing.Font("华文中宋", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TurnLabel1.Location = new System.Drawing.Point(6, 23);
+            this.TurnLabel1.Location = new System.Drawing.Point(6, 3);
             this.TurnLabel1.Name = "TurnLabel1";
             this.TurnLabel1.Size = new System.Drawing.Size(85, 39);
             this.TurnLabel1.TabIndex = 0;
@@ -172,16 +173,16 @@
             // 
             this.groupBox3.Controls.Add(this.ConcedeButton);
             this.groupBox3.Controls.Add(this.PromptButton);
-            this.groupBox3.Location = new System.Drawing.Point(3, 119);
+            this.groupBox3.Location = new System.Drawing.Point(3, 105);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(128, 199);
+            this.groupBox3.Size = new System.Drawing.Size(128, 150);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             // 
             // ConcedeButton
             // 
             this.ConcedeButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ConcedeButton.Location = new System.Drawing.Point(6, 109);
+            this.ConcedeButton.Location = new System.Drawing.Point(6, 79);
             this.ConcedeButton.Name = "ConcedeButton";
             this.ConcedeButton.Size = new System.Drawing.Size(113, 51);
             this.ConcedeButton.TabIndex = 2;
@@ -192,7 +193,7 @@
             // PromptButton
             // 
             this.PromptButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PromptButton.Location = new System.Drawing.Point(6, 26);
+            this.PromptButton.Location = new System.Drawing.Point(6, 10);
             this.PromptButton.Name = "PromptButton";
             this.PromptButton.Size = new System.Drawing.Size(113, 51);
             this.PromptButton.TabIndex = 0;
@@ -203,7 +204,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 324);
+            this.groupBox1.Location = new System.Drawing.Point(3, 261);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(128, 245);
             this.groupBox1.TabIndex = 5;
@@ -217,7 +218,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 219);
             this.label1.TabIndex = 0;
-            this.label1.Text = "请在左边操作\r\n\r\n左键点击炸飞机\r\n\r\n红色：炸中机头\r\n\r\n黄色：炸中机身\r\n\r\n浅蓝色：未炸中";
+            this.label1.Text = "请在左边操作\r\n\r\n左键点击炸飞机\r\n橙色：炸中机头\r\n黄色：炸中机身\r\n浅蓝色：未炸中\r\n\r\n点击提示后选中\r\n黄色块获得辅助";
             // 
             // RivalView
             // 
