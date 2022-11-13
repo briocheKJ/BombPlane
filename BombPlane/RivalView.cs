@@ -146,9 +146,8 @@ namespace BombPlane
                 Squares[1][id].BackColor == Color.Yellow &&
                 Prompt)
             {
-                UpdateCellList(HintSystem.CalcHint(id, state));
-
                 Prompt = false;
+                UpdateCellList(HintSystem.CalcHint(id, state));
             }
         }
 
@@ -186,7 +185,6 @@ namespace BombPlane
         List<int> CellList = new List<int>();
         private void MyTable_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            //List<int> CellList = new List<int> { 0, 90, 1, 2, 3, 4, 5, 6, 9, 99};
             foreach (int CellNum in CellList)
             {
                 int col = CellNum % 10;
@@ -201,6 +199,7 @@ namespace BombPlane
         public void UpdateCellList(List<int> cells)
         {
             CellList = cells;
+            MyTable.Refresh();
         }
 
         public void ClearCellList()
