@@ -17,6 +17,7 @@ namespace BombPlane
         private Label[][] Squares = new Label[2][];
         private int RestTime = 15;
         private bool ActionEnabled = false;
+        private bool Prompt = false;
         //Form fatherform;
         public RivalView(Form father)
         {
@@ -140,17 +141,35 @@ namespace BombPlane
 
                 actionEvent.Set();
             }
+
+            if (e.Button == MouseButtons.Left && ActionEnabled &&
+                Squares[1][id].BackColor == Color.Yellow &&
+                Prompt)
+            {
+                UpdateCellList(HintSystem.CalcHint(id, state));
+
+                Prompt = false;
+            }
         }
 
         public void SetActionEvent(AutoResetEvent action)
         {
             actionEvent = action;
         }
+
+        private int[][] state;
         //提示按钮
         private void PromptButton_Click(object sender, EventArgs e)
         {
-
+            PromptButton.Enabled = false;
+            Prompt = true;
         }
+
+        public void SetState(int[][] state)
+        {
+            this.state = state;
+        }
+
         //认输按钮
         private void ConcedeButton_Click(object sender, EventArgs e)
         {
@@ -164,9 +183,10 @@ namespace BombPlane
             //fatherform.Close();
         }
 
+        List<int> CellList = new List<int>();
         private void MyTable_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
-            List<int> CellList = new List<int> { 0, 90, 1, 2, 3, 4, 5, 6, 9, 99};
+            //List<int> CellList = new List<int> { 0, 90, 1, 2, 3, 4, 5, 6, 9, 99};
             foreach (int CellNum in CellList)
             {
                 int col = CellNum % 10;
@@ -176,6 +196,16 @@ namespace BombPlane
                     e.Graphics.DrawRectangle(new Pen(Color.Red), e.CellBounds);
                 }
             }
+        }
+
+        public void UpdateCellList(List<int> cells)
+        {
+            CellList = cells;
+        }
+
+        public void ClearCellList()
+        {
+            CellList = new List<int>();
         }
     }
 }

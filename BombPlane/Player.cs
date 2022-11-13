@@ -48,6 +48,7 @@ namespace BombPlane
             int act = 0;
 
             rivalForm.SetActionEvent(actionEvent);
+            rivalForm.SetState(state);
 
             UIControl.Invoke(new MethodInvoker(delegate { rivalForm.EnableButtons(); }));
             //Display
